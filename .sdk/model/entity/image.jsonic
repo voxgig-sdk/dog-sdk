@@ -1,0 +1,305 @@
+# Entity: image
+
+main: kit: entity: image: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "message"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "image"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "hound"
+                kind: "param"
+                name: "breed_id"
+                orig: "breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "afghan"
+                kind: "param"
+                name: "sub_breed"
+                orig: "sub_breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/breed/{breed}/{subBreed}/images"
+          parts: [
+            "breed"
+            "{breed_id}"
+            "{sub_breed}"
+            "images"
+          ]
+          rename: {
+            param: {
+              breed: "breed_id"
+              subBreed: "sub_breed"
+            }
+          }
+          select: {
+            exist: [
+              "breed_id"
+              "sub_breed"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "hound"
+                kind: "param"
+                name: "breed_id"
+                orig: "breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/breed/{breed}/images"
+          parts: [
+            "breed"
+            "{breed_id}"
+            "images"
+          ]
+          rename: {
+            param: {
+              breed: "breed_id"
+            }
+          }
+          select: {
+            exist: [
+              "breed_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "hound"
+                kind: "param"
+                name: "breed_id"
+                orig: "breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "param"
+                name: "count"
+                orig: "count"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/breed/{breed}/images/random/{count}"
+          parts: [
+            "breed"
+            "{breed_id}"
+            "images"
+            "random"
+            "{count}"
+          ]
+          rename: {
+            param: {
+              breed: "breed_id"
+            }
+          }
+          select: {
+            exist: [
+              "breed_id"
+              "count"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "hound"
+                kind: "param"
+                name: "breed_id"
+                orig: "breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "afghan"
+                kind: "param"
+                name: "sub_breed"
+                orig: "sub_breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/breed/{breed}/{subBreed}/images/random"
+          parts: [
+            "breed"
+            "{breed_id}"
+            "{sub_breed}"
+            "images"
+            "random"
+          ]
+          rename: {
+            param: {
+              breed: "breed_id"
+              subBreed: "sub_breed"
+            }
+          }
+          select: {
+            "$action": "random"
+            exist: [
+              "breed_id"
+              "sub_breed"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: "hound"
+                kind: "param"
+                name: "breed_id"
+                orig: "breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/breed/{breed}/images/random"
+          parts: [
+            "breed"
+            "{breed_id}"
+            "images"
+            "random"
+          ]
+          rename: {
+            param: {
+              breed: "breed_id"
+            }
+          }
+          select: {
+            "$action": "random"
+            exist: [
+              "breed_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "count"
+                orig: "count"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/breeds/image/random/{count}"
+          parts: [
+            "breeds"
+            "image"
+            "random"
+            "{count}"
+          ]
+          select: {
+            exist: [
+              "count"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/breeds/image/random"
+          parts: [
+            "breeds"
+            "image"
+            "random"
+          ]
+          select: {
+            "$action": "random"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "breed"
+      ]
+      [
+        "breed"
+        "random"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://dog.ceo/dog-api/"
+      }
+      description: "The internet's biggest collection of open source dog pictures. Over 20,000 images of dogs accessible by over 120 breeds. Programmatic access to dog images."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://dog.ceo/api"
+        }
+      ]
+      title: "Dog API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

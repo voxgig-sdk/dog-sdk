@@ -1,0 +1,85 @@
+# Entity: breed
+
+main: kit: entity: breed: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "message"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "breed"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "hound"
+                kind: "param"
+                name: "id"
+                orig: "breed"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/breed/{breed}/list"
+          parts: [
+            "breed"
+            "{id}"
+            "list"
+          ]
+          rename: {
+            param: {
+              breed: "id"
+            }
+          }
+          select: {
+            "$action": "list"
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/breeds/list/all"
+          parts: [
+            "breeds"
+            "list"
+            "all"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

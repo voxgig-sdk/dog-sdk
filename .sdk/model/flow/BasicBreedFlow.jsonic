@@ -1,0 +1,44 @@
+# BasicBreedFlow
+
+main: kit: flow: BasicBreedFlow:
+{
+  entity: "breed",
+  kind: "basic",
+  name: "BasicBreedFlow",
+  step: [
+    {
+      match: {
+        breed: "breed01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "breed_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "breed_ref01",
+        srcdatavar: "breed_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-breed_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBreedFlow"
+}

@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "image": {
+      "IMAGE00": {
+        "message": [],
+        "status": "s15",
+        "breed_id": "BREED01",
+        "sub_breed": "SUB_BREED01",
+        "count": "COUNT01"
+      },
+      "IMAGE01": {
+        "message": [],
+        "status": "s29",
+        "breed_id": "BREED01",
+        "sub_breed": "SUB_BREED01",
+        "count": "COUNT01"
+      },
+      "IMAGE02": {
+        "message": [],
+        "status": "s3d",
+        "breed_id": "BREED01",
+        "sub_breed": "SUB_BREED01",
+        "count": "COUNT01"
+      }
+    }
+  },
+  "new": {
+    "image": {
+      "image_ref01": {
+        "message": [],
+        "status": "s51"
+      }
+    }
+  }
+}
