@@ -1,10 +1,10 @@
 Gem::Specification.new do |spec|
-  spec.name          = "dog-sdk"
+  spec.name          = "voxgig-sdk-dog"
   spec.version       = "0.0.1"
   spec.authors       = ["Voxgig"]
   spec.summary       = "Dog SDK for Ruby"
   spec.license       = "MIT"
-  spec.homepage      = "https://github.com/voxgig/dog-sdk"
+  spec.homepage      = "https://github.com/voxgig-sdk/dog-sdk"
 
   spec.files         = Dir["lib/**/*.rb", "*.rb"]
   spec.require_paths = ["."]

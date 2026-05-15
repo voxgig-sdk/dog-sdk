@@ -1,6 +1,6 @@
 package utility
 
-import "voxgigdogsdk/core"
+import "github.com/voxgig-sdk/dog-sdk/core"
 
 func makeErrorUtil(ctx *core.Context, err error) (any, error) {
 	if ctx == nil {

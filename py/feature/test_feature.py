@@ -52,8 +52,21 @@ class DogTestFeature(DogBaseFeature):
             if not isinstance(entmap, dict):
                 entmap = {}
 
+            # For single-entity ops (load, remove) with an empty explicit
+            # match, fall back to the id the entity client already knows from a
+            # prior create/load (in fctx.match / fctx.data). Mirrors the TS
+            # mock where param() resolves the id from that accumulated state.
+            def _resolve_match(explicit):
+                if isinstance(explicit, dict) and len(explicit) > 0:
+                    return explicit
+                for src in (getattr(fctx, "match", None), getattr(fctx, "data", None)):
+                    v = vs.getprop(src, "id") if src is not None else None
+                    if v is not None and v != "__UNDEFINED__":
+                        return {"id": v}
+                return {}
+
             if op.name == "load":
-                args = test_self.build_args(fctx, op, fctx.reqmatch)
+                args = test_self.build_args(fctx, op, _resolve_match(fctx.reqmatch))
                 found = vs.select(entmap, args)
                 ent = vs.getelem(found, 0)
                 if ent is None:
@@ -108,11 +121,11 @@ class DogTestFeature(DogBaseFeature):
                 return respond(200, out)
 
             elif op.name == "remove":
-                args = test_self.build_args(fctx, op, fctx.reqmatch)
+                args = test_self.build_args(fctx, op, _resolve_match(fctx.reqmatch))
                 found = vs.select(entmap, args)
                 ent = vs.getelem(found, 0)
-                if ent is None:
-                    return respond(404, None, {"statusText": "Not found"})
+                # Remove only the first matched entity. If nothing matches,
+                # succeed as a no-op rather than erroring.
                 if isinstance(ent, dict):
                     eid = vs.getprop(ent, "id")
                     vs.delprop(entmap, eid)

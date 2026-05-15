@@ -1,10 +1,10 @@
 package voxgigdogsdk
 
 import (
-	"voxgigdogsdk/core"
-	"voxgigdogsdk/entity"
-	"voxgigdogsdk/feature"
-	_ "voxgigdogsdk/utility"
+	"github.com/voxgig-sdk/dog-sdk/core"
+	"github.com/voxgig-sdk/dog-sdk/entity"
+	"github.com/voxgig-sdk/dog-sdk/feature"
+	_ "github.com/voxgig-sdk/dog-sdk/utility"
 )
 
 // Type aliases preserve external API.

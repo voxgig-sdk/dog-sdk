@@ -3,7 +3,7 @@ package utility
 import (
 	vs "github.com/voxgig/struct"
 
-	"voxgigdogsdk/core"
+	"github.com/voxgig-sdk/dog-sdk/core"
 )
 
 const headerAuth = "authorization"

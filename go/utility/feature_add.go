@@ -1,6 +1,6 @@
 package utility
 
-import "voxgigdogsdk/core"
+import "github.com/voxgig-sdk/dog-sdk/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client

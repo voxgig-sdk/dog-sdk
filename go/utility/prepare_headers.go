@@ -3,7 +3,7 @@ package utility
 import (
 	vs "github.com/voxgig/struct"
 
-	"voxgigdogsdk/core"
+	"github.com/voxgig-sdk/dog-sdk/core"
 )
 
 func prepareHeadersUtil(ctx *core.Context) map[string]any {

@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"voxgigdogsdk/core"
+	"github.com/voxgig-sdk/dog-sdk/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {

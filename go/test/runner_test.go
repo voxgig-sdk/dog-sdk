@@ -12,7 +12,7 @@ import (
 	"sync"
 	"testing"
 
-	sdk "voxgigdogsdk"
+	sdk "github.com/voxgig-sdk/dog-sdk"
 
 	vs "github.com/voxgig/struct"
 )

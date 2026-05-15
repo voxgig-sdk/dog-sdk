@@ -1,6 +1,6 @@
 package utility
 
-import "voxgigdogsdk/core"
+import "github.com/voxgig-sdk/dog-sdk/core"
 
 func doneUtil(ctx *core.Context) (any, error) {
 	if ctx.Ctrl.Explain != nil {

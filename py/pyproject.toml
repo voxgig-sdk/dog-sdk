@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dog-sdk"
+name = "voxgig-sdk-dog"
 version = "0.0.1"
 description = "Dog SDK for Python"
 license = "MIT"

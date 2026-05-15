@@ -1,7 +1,7 @@
-package = "dog-sdk"
+package = "voxgig-sdk-dog"
 version = "0.0-1"
 source = {
-  url = "git://github.com/voxgig/dog-sdk.git"
+  url = "git://github.com/voxgig-sdk/dog-sdk.git"
 }
 description = {
   summary = "Dog SDK for Lua",

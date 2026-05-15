@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "voxgigdogsdk"
+	sdk "github.com/voxgig-sdk/dog-sdk"
 )
 
 func TestCustomUtility(t *testing.T) {

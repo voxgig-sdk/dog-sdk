@@ -122,8 +122,25 @@ class DogTestFeature extends DogBaseFeature
 
             $alias = is_object($op) ? ($op->alias ?? null) : \Voxgig\Struct\Struct::getprop($op, 'alias');
 
+            // For single-entity ops (load, remove) with an empty explicit
+            // match, fall back to the id the entity client already knows from a
+            // prior create/load (carried in $fctx->match / $fctx->data). This
+            // mirrors the TS mock where param() resolves the id from that
+            // accumulated state — e.g. `create()` then `remove([])` removes the
+            // just-created entity, not an arbitrary fixture.
+            $resolve_match = function ($explicit) use ($fctx) {
+                if (is_array($explicit) && !empty($explicit)) return $explicit;
+                foreach ([$fctx->match, $fctx->data] as $src) {
+                    $arr = is_array($src) ? $src : (is_object($src) ? (array) $src : []);
+                    if (isset($arr['id']) && $arr['id'] !== null && $arr['id'] !== '__UNDEFINED__') {
+                        return ['id' => $arr['id']];
+                    }
+                }
+                return [];
+            };
+
             if ($op->name === 'load') {
-                $ent = $find_first($entmap, $fctx->reqmatch, $alias);
+                $ent = $find_first($entmap, $resolve_match($fctx->reqmatch), $alias);
                 if ($ent === null) {
                     return $respond(404, null, ['statusText' => 'Not found']);
                 }
@@ -174,10 +191,9 @@ class DogTestFeature extends DogBaseFeature
                 return $respond(200, $out);
 
             } elseif ($op->name === 'remove') {
-                $ent = $find_first($entmap, $fctx->reqmatch, $alias);
-                if ($ent === null) {
-                    return $respond(404, null, ['statusText' => 'Not found']);
-                }
+                $ent = $find_first($entmap, $resolve_match($fctx->reqmatch), $alias);
+                // Remove only the first matched entity. If nothing matches,
+                // succeed as a no-op rather than erroring.
                 $id = is_array($ent) ? ($ent['id'] ?? null) : null;
                 if ($id !== null) {
                     unset($entmap[$id]);

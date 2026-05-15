@@ -1,6 +1,6 @@
 package utility
 
-import "voxgigdogsdk/core"
+import "github.com/voxgig-sdk/dog-sdk/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

@@ -1,7 +1,7 @@
 package entity
 
 import (
-	"voxgigdogsdk/core"
+	"github.com/voxgig-sdk/dog-sdk/core"
 
 	vs "github.com/voxgig/struct"
 )

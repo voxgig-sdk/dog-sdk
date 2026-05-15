@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-// Dog SDK test feature
+// ProjectName SDK test feature
 
 require_once __DIR__ . '/BaseFeature.php';
 require_once __DIR__ . '/../utility/Param.php';
 
-class DogTestFeature extends DogBaseFeature
+class ProjectNameTestFeature extends ProjectNameBaseFeature
 {
     private mixed $client;
     private ?array $options;
@@ -21,7 +21,7 @@ class DogTestFeature extends DogBaseFeature
         $this->options = null;
     }
 
-    public function init(DogContext $ctx, array $options): void
+    public function init(ProjectNameContext $ctx, array $options): void
     {
         $this->client = $ctx->client;
         $this->options = $options;
@@ -45,7 +45,7 @@ class DogTestFeature extends DogBaseFeature
         $entity = new \stdClass();
         $entity->data = $entity_data;
 
-        $test_fetcher = function (DogContext $fctx, string $_fullurl, array $_fetchdef) use ($entity): array {
+        $test_fetcher = function (ProjectNameContext $fctx, string $_fullurl, array $_fetchdef) use ($entity): array {
             $respond = function (int $status, mixed $data, ?array $extra = null): array {
                 $out = [
                     'status' => $status,
@@ -122,8 +122,25 @@ class DogTestFeature extends DogBaseFeature
 
             $alias = is_object($op) ? ($op->alias ?? null) : \Voxgig\Struct\Struct::getprop($op, 'alias');
 
+            // For single-entity ops (load, remove) with an empty explicit
+            // match, fall back to the id the entity client already knows from a
+            // prior create/load (carried in $fctx->match / $fctx->data). This
+            // mirrors the TS mock where param() resolves the id from that
+            // accumulated state — e.g. `create()` then `remove([])` removes the
+            // just-created entity, not an arbitrary fixture.
+            $resolve_match = function ($explicit) use ($fctx) {
+                if (is_array($explicit) && !empty($explicit)) return $explicit;
+                foreach ([$fctx->match, $fctx->data] as $src) {
+                    $arr = is_array($src) ? $src : (is_object($src) ? (array) $src : []);
+                    if (isset($arr['id']) && $arr['id'] !== null && $arr['id'] !== '__UNDEFINED__') {
+                        return ['id' => $arr['id']];
+                    }
+                }
+                return [];
+            };
+
             if ($op->name === 'load') {
-                $ent = $find_first($entmap, $fctx->reqmatch, $alias);
+                $ent = $find_first($entmap, $resolve_match($fctx->reqmatch), $alias);
                 if ($ent === null) {
                     return $respond(404, null, ['statusText' => 'Not found']);
                 }
@@ -174,10 +191,9 @@ class DogTestFeature extends DogBaseFeature
                 return $respond(200, $out);
 
             } elseif ($op->name === 'remove') {
-                $ent = $find_first($entmap, $fctx->reqmatch, $alias);
-                if ($ent === null) {
-                    return $respond(404, null, ['statusText' => 'Not found']);
-                }
+                $ent = $find_first($entmap, $resolve_match($fctx->reqmatch), $alias);
+                // Remove only the first matched entity. If nothing matches,
+                // succeed as a no-op rather than erroring.
                 $id = is_array($ent) ? ($ent['id'] ?? null) : null;
                 if ($id !== null) {
                     unset($entmap[$id]);
@@ -186,7 +202,7 @@ class DogTestFeature extends DogBaseFeature
                 return $respond(200, null);
 
             } elseif ($op->name === 'create') {
-                $id = DogParam::call($fctx, 'id');
+                $id = ProjectNameParam::call($fctx, 'id');
                 if ($id === null || $id === '__UNDEFINED__') {
                     $id = sprintf('%04x%04x%04x%04x',
                         random_int(0, 0xFFFF), random_int(0, 0xFFFF),
@@ -217,7 +233,7 @@ class DogTestFeature extends DogBaseFeature
      * current operation point, emit a `$OR` clause matching the key (and
      * its alias, if any) against the supplied value.
      */
-    public function buildArgs(DogContext $ctx, $op, $args): array
+    public function buildArgs(ProjectNameContext $ctx, $op, $args): array
     {
         // If args is empty/missing, return an empty $AND so select() matches
         // every entry — the TS test feature relies on this for empty-match
@@ -264,7 +280,7 @@ class DogTestFeature extends DogBaseFeature
             $is_id = ($k === 'id');
             $in_reqd = in_array($k, $reqd_names, true);
             if ($is_id || $in_reqd) {
-                $v = DogParam::call($ctx, $k);
+                $v = ProjectNameParam::call($ctx, $k);
                 $ka = \Voxgig\Struct\Struct::getprop($alias, $k);
 
                 $qor = [[$k => $v]];

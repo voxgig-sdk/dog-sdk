@@ -1,4 +1,4 @@
-module voxgigdogsdk
+module github.com/voxgig-sdk/dog-sdk
 
 go 1.20
 

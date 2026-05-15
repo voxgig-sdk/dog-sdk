@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "voxgigdogsdk"
-	"voxgigdogsdk/core"
+	sdk "github.com/voxgig-sdk/dog-sdk"
+	"github.com/voxgig-sdk/dog-sdk/core"
 )
 
 func TestImageDirect(t *testing.T) {

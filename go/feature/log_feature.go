@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"voxgigdogsdk/core"
+	"github.com/voxgig-sdk/dog-sdk/core"
 )
 
 type LogFeature struct {

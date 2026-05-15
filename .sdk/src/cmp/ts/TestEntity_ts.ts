@@ -460,12 +460,21 @@ const generateLoad: OpGen = (ctx, step, index) => {
   // load({}) leaves the URL with literal {param} placeholders and the live
   // API returns 404 HTML, which the SDK then fails to parse as JSON. There
   // is no synthetic identifier to substitute, so skip emitting the load
-  // step entirely in that case.
+  // step's call in that case — but still declare the entity-var if no
+  // prior step has, so that later flow steps (e.g. remove) referencing
+  // ${entvar} compile.
   const loadOp = entity.op?.load
   const loadPoint = loadOp?.points?.[0]
   const loadPathParams = loadPoint?.args?.params || []
   const loadHasRequiredParams = loadPathParams.some((p: any) => p.reqd !== false)
   if (!hasEntId && loadHasRequiredParams) {
+    if (!hasEntVar) {
+      Content(`
+    // LOAD: skipped — no entity id field and load requires path params.
+    // Entity-var is declared here so later flow steps still compile.
+    const ${entvar} = client.${nom(entity, 'Name')}()
+`)
+    }
     return
   }
 
@@ -507,8 +516,6 @@ const generateRemove: OpGen = (ctx, step, index) => {
   const needsEnt = !priorSteps.some(s =>
     ['create', 'list', 'load', 'update', 'remove'].includes(s.op))
 
-  const hasEntIdR = null != entity.id
-
   Content(`
     // REMOVE
 `)
@@ -516,13 +523,11 @@ const generateRemove: OpGen = (ctx, step, index) => {
     Content(`    const ${entvar} = client.${nom(entity, 'Name')}()
 `)
   }
-  Content(`    const ${matchvar}: any = {}
-`)
-  if (hasEntIdR) {
-    Content(`    ${matchvar}.id = ${srcdatavar}.id
-`)
-  }
-  Content(`    await ${entvar}.remove(${matchvar})
+  // Always match the prior-created entity by id. The mock test feature
+  // removes the first match in entmap, so without a specific id the
+  // result depends on hash-sort order and flakes (see cheapshark).
+  Content(`    const ${matchvar}: any = { id: ${srcdatavar}.id }
+    await ${entvar}.remove(${matchvar})
   `)
 }
 

@@ -3,7 +3,7 @@ package utility
 import (
 	"reflect"
 
-	"voxgigdogsdk/core"
+	"github.com/voxgig-sdk/dog-sdk/core"
 )
 
 func featureHookUtil(ctx *core.Context, name string) {
