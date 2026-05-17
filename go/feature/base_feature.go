@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/dog-sdk/core"
+	"github.com/voxgig-sdk/dog-sdk/go/core"
 )
 
 type BaseFeature struct {
