@@ -15,9 +15,6 @@ module DogConfig
       },
       "options" => {
         "base" => "https://dog.ceo/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

@@ -16,8 +16,28 @@ main: {
       ]
       title: "Dog API"
       version: "1.0.0"
+      tagline: "Free, open-source library of 20,000+ dog photos covering 120+ breeds and their sub-breeds"
+      homepage: "https://dog.ceo/dog-api/"
+      docs_url: "https://dog.ceo/dog-api/documentation/"
+      license_short: "Open source community project; images contributed via the dog-api-images GitHub repository."
+      license_md: `- The Dog API is a free, open-source service; no API key or registration is required.
+- Image data is sourced from the community-maintained [dog-api-images](https://github.com/jigsawpieces/dog-api-images) repository on GitHub.
+- No explicit licence terms are published on the site; check the upstream image repository for any per-image attribution requirements.
+- The project is donation-supported and may be subject to availability changes; treat hosting as best-effort.`
+      about_md: `The [Dog API](https://dog.ceo/dog-api/) ("Dog CEO") is a free, community-driven service that exposes a large catalogue of dog photos through a small JSON HTTP API. It is maintained as an open-source project, with images contributed via the [dog-api-images](https://github.com/jigsawpieces/dog-api-images) GitHub repository, and runs on donations.
+
+What you get from the API:
+
+- A master list of breeds and their sub-breeds (\`/breeds/list/all\`).
+- Random dog images, either from the full collection or filtered by breed / sub-breed.
+- Direct image URLs that can be embedded or downloaded.
+
+All endpoints are served from \`https://dog.ceo/api\` over HTTPS and return JSON. No authentication is required, and the published documentation does not specify rate limits — please be considerate when batching requests.`
+      entity_desc: {
+        breed: "The taxonomy of dogs covered by the API, including sub-breeds; backed by `/breeds/list/all` and breed-scoped image endpoints under `/breed/{breed}`."
+        image: "Photographs of dogs returned as direct image URLs, available as random picks (`/breeds/image/random`) or filtered by breed and sub-breed."
+      }
+      auth: false
     }
   }
-}
-
 }
