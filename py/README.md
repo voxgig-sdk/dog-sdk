@@ -10,7 +10,7 @@ The Python SDK for the Dog API — an entity-oriented client following Pythonic 
 
 ## Install
 ```bash
-pip install dog-sdk
+pip install voxgig-sdk-dog
 ```
 
 Or install from source:

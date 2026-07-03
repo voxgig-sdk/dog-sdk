@@ -10,13 +10,13 @@ The Ruby SDK for the Dog API — an entity-oriented client using idiomatic Ruby 
 
 ## Install
 ```bash
-gem install dog-sdk
+gem install voxgig-sdk-dog
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "dog-sdk"
+gem "voxgig-sdk-dog"
 ```
 
 Then run:

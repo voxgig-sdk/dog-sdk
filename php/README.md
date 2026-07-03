@@ -10,7 +10,7 @@ The PHP SDK for the Dog API — an entity-oriented client using PHP conventions.
 
 ## Install
 ```bash
-composer require voxgig/dog-sdk
+composer require voxgig-sdk/dog
 ```
 
 

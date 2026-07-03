@@ -10,7 +10,7 @@ The Lua SDK for the Dog API — an entity-oriented client using Lua conventions.
 
 ## Install
 ```bash
-luarocks install dog-sdk
+luarocks install voxgig-sdk-dog
 ```
 
 If the module is not yet published, add the source directory to

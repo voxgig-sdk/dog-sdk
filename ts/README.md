@@ -10,7 +10,7 @@ The TypeScript SDK for the Dog API — a type-safe, entity-oriented client with 
 
 ## Install
 ```bash
-npm install dog
+npm install @voxgig-sdk/dog
 ```
 ## Tutorial: your first API call
 
