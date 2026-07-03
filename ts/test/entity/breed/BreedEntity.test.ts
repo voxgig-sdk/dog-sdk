@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'DOG_TEST_BREED_ENTID': idmap,
     'DOG_TEST_LIVE': 'FALSE',
     'DOG_TEST_EXPLAIN': 'FALSE',
+    'DOG_APIKEY': 'NONE',
   })
 
   idmap = env['DOG_TEST_BREED_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new DogSDK(merge([
       {
+        apikey: env.DOG_APIKEY,
       },
       extra
     ]))

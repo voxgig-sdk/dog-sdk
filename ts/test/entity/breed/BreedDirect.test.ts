@@ -142,12 +142,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'DOG_TEST_BREED_ENTID': {},
     'DOG_TEST_LIVE': 'FALSE',
+    'DOG_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.DOG_TEST_LIVE
 
   if (live) {
     const client = new DogSDK({
+      apikey: env.DOG_APIKEY,
     })
 
     let idmap: any = env['DOG_TEST_BREED_ENTID']

@@ -100,6 +100,7 @@ def _image_basic_setup(extra):
         "DOG_TEST_IMAGE_ENTID": idmap,
         "DOG_TEST_LIVE": "FALSE",
         "DOG_TEST_EXPLAIN": "FALSE",
+        "DOG_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -110,6 +111,7 @@ def _image_basic_setup(extra):
     if env.get("DOG_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("DOG_APIKEY"),
             },
             extra or {},
         ])

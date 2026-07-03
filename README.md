@@ -1,20 +1,8 @@
 # Dog SDK
 
-Free, open-source library of 20,000+ dog photos covering 120+ breeds and their sub-breeds
+Dog API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Dog API
-
-The [Dog API](https://dog.ceo/dog-api/) ("Dog CEO") is a free, community-driven service that exposes a large catalogue of dog photos through a small JSON HTTP API. It is maintained as an open-source project, with images contributed via the [dog-api-images](https://github.com/jigsawpieces/dog-api-images) GitHub repository, and runs on donations.
-
-What you get from the API:
-
-- A master list of breeds and their sub-breeds (`/breeds/list/all`).
-- Random dog images, either from the full collection or filtered by breed / sub-breed.
-- Direct image URLs that can be embedded or downloaded.
-
-All endpoints are served from `https://dog.ceo/api` over HTTPS and return JSON. No authentication is required, and the published documentation does not specify rate limits — please be considerate when batching requests.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install dog-sdk
 luarocks install dog-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { DogSDK } from 'dog'
 
-const client = new DogSDK({})
+const client = new DogSDK({
+  apikey: process.env.DOG_APIKEY,
+})
 
 // List all breeds
 const breeds = await client.Breed().list()
+console.log(breeds.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Breed** | The taxonomy of dogs covered by the API, including sub-breeds; backed by `/breeds/list/all` and breed-scoped image endpoints under `/breed/{breed}`. | `/breed/{breed}/list` |
-| **Image** | Photographs of dogs returned as direct image URLs, available as random picks (`/breeds/image/random`) or filtered by breed and sub-breed. | `/breed/{breed}/{subBreed}/images` |
+| **Breed** |  | `/breed/{breed}/list` |
+| **Image** |  | `/breed/{breed}/{subBreed}/images` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,17 +101,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from dog_sdk import DogSDK
 
-client = DogSDK({})
+client = DogSDK({
+    "apikey": os.environ.get("DOG_APIKEY"),
+})
 
 # List all breeds
-breeds, err = client.Breed(None).list(None, None)
+breeds, err = client.Breed().list()
+print(breeds)
 
 # Load a specific breed
-breed, err = client.Breed(None).load(
-    {"id": "example_id"}, None
-)
+breed, err = client.Breed().load({"id": "example_id"})
+print(breed)
 ```
 
 ### PHP
@@ -130,15 +123,17 @@ breed, err = client.Breed(None).load(
 <?php
 require_once 'dog_sdk.php';
 
-$client = new DogSDK([]);
+$client = new DogSDK([
+    "apikey" => getenv("DOG_APIKEY"),
+]);
 
 // List all breeds
-[$breeds, $err] = $client->Breed(null)->list(null, null);
+[$breeds, $err] = $client->Breed()->list();
+print_r($breeds);
 
 // Load a specific breed
-[$breed, $err] = $client->Breed(null)->load(
-    ["id" => "example_id"], null
-);
+[$breed, $err] = $client->Breed()->load(["id" => "example_id"]);
+print_r($breed);
 ```
 
 ### Golang
@@ -146,10 +141,13 @@ $client = new DogSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/dog-sdk/go"
 
-client := sdk.NewDogSDK(map[string]any{})
+client := sdk.NewDogSDK(map[string]any{
+    "apikey": os.Getenv("DOG_APIKEY"),
+})
 
 // List all breeds
 breeds, err := client.Breed(nil).List(nil, nil)
+fmt.Println(breeds)
 ```
 
 ### Ruby
@@ -157,15 +155,17 @@ breeds, err := client.Breed(nil).List(nil, nil)
 ```ruby
 require_relative "Dog_sdk"
 
-client = DogSDK.new({})
+client = DogSDK.new({
+  "apikey" => ENV["DOG_APIKEY"],
+})
 
 # List all breeds
-breeds, err = client.Breed(nil).list(nil, nil)
+breeds, err = client.Breed().list
+puts breeds
 
 # Load a specific breed
-breed, err = client.Breed(nil).load(
-  { "id" => "example_id" }, nil
-)
+breed, err = client.Breed().load({ "id" => "example_id" })
+puts breed
 ```
 
 ### Lua
@@ -173,15 +173,17 @@ breed, err = client.Breed(nil).load(
 ```lua
 local sdk = require("dog_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("DOG_APIKEY"),
+})
 
 -- List all breeds
-local breeds, err = client:Breed(nil):list(nil, nil)
+local breeds, err = client:Breed():list()
+print(breeds)
 
 -- Load a specific breed
-local breed, err = client:Breed(nil):load(
-  { id = "example_id" }, nil
-)
+local breed, err = client:Breed():load({ id = "example_id" })
+print(breed)
 ```
 
 ## Unit testing in offline mode
@@ -200,25 +202,21 @@ const result = await client.Breed().load({ id: 'test01' })
 ### Python
 
 ```python
-client = DogSDK.test(None, None)
-result, err = client.Breed(None).load(
-    {"id": "test01"}, None
-)
+client = DogSDK.test()
+result, err = client.Breed().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = DogSDK::test(null, null);
-[$result, $err] = $client->Breed(null)->load(
-    ["id" => "test01"], null
-);
+$client = DogSDK::test();
+[$result, $err] = $client->Breed()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Breed(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -227,19 +225,15 @@ result, err := client.Breed(nil).Load(
 ### Ruby
 
 ```ruby
-client = DogSDK.test(nil, nil)
-result, err = client.Breed(nil).load(
-  { "id" => "test01" }, nil
-)
+client = DogSDK.test
+result, err = client.Breed().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Breed(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Breed():load({ id = "test01" })
 ```
 
 ## How it works
@@ -343,16 +337,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Dog API
-
-- Upstream: [https://dog.ceo/dog-api/](https://dog.ceo/dog-api/)
-- API docs: [https://dog.ceo/dog-api/documentation/](https://dog.ceo/dog-api/documentation/)
-
-- The Dog API is a free, open-source service; no API key or registration is required.
-- Image data is sourced from the community-maintained [dog-api-images](https://github.com/jigsawpieces/dog-api-images) repository on GitHub.
-- No explicit licence terms are published on the site; check the upstream image repository for any per-image attribution requirements.
-- The project is donation-supported and may be subject to availability changes; treat hosting as best-effort.
 
 ---
 

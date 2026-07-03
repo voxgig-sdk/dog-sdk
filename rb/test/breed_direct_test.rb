@@ -120,12 +120,14 @@ def breed_direct_setup(mockres)
   env = Runner.env_override({
     "DOG_TEST_BREED_ENTID" => {},
     "DOG_TEST_LIVE" => "FALSE",
+    "DOG_APIKEY" => "NONE",
   })
 
   live = env["DOG_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["DOG_APIKEY"],
     }
     client = DogSDK.new(merged_opts)
     return {
