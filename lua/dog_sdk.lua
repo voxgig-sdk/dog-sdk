@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:breed():list() / client:breed():load({ id = ... })
-function DogSDK:breed(data)
+-- Idiomatic facade: client:Breed():list() / client:Breed():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DogSDK:Breed(data)
   local EntityMod = require("entity.breed_entity")
   if data == nil then
     if self._breed == nil then
@@ -256,15 +257,10 @@ function DogSDK:breed(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:breed() instead.
-function DogSDK:Breed(data)
-  local EntityMod = require("entity.breed_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:image():list() / client:image():load({ id = ... })
-function DogSDK:image(data)
+-- Idiomatic facade: client:Image():list() / client:Image():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DogSDK:Image(data)
   local EntityMod = require("entity.image_entity")
   if data == nil then
     if self._image == nil then
@@ -272,12 +268,6 @@ function DogSDK:image(data)
     end
     return self._image
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:image() instead.
-function DogSDK:Image(data)
-  local EntityMod = require("entity.image_entity")
   return EntityMod.new(self, data)
 end
 

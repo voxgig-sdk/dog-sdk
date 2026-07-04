@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## BreedEntity
 
 ```lua
-local breed = client:breed(nil)
+local breed = client:Breed(nil)
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ local breed = client:breed(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:breed():list()
+local results, err = client:Breed():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -112,7 +112,7 @@ local results, err = client:breed():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:breed():load({ id = "breed_id" })
+local result, err = client:Breed():load({ id = "breed_id" })
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## ImageEntity
 
 ```lua
-local image = client:image(nil)
+local image = client:Image(nil)
 ```
 
 ### Fields
@@ -165,7 +165,7 @@ local image = client:image(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:image():list()
+local results, err = client:Image():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -173,7 +173,7 @@ local results, err = client:image():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:image():load({ id = "image_id" })
+local result, err = client:Image():load({ id = "image_id" })
 ```
 
 ### Common Methods

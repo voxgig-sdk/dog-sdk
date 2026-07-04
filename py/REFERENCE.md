@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## BreedEntity
 
 ```python
-breed = client.breed
+breed = client.Breed()
 ```
 
 ### Fields
@@ -101,7 +101,9 @@ breed = client.breed
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.breed.list({})
+results = client.Breed().list({})
+for breed in results:
+    print(breed)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -109,7 +111,7 @@ results = client.breed.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.breed.load({"id": "breed_id"})
+result = client.Breed().load({"id": "breed_id"})
 ```
 
 ### Common Methods
@@ -144,7 +146,7 @@ Return the entity name.
 ## ImageEntity
 
 ```python
-image = client.image
+image = client.Image()
 ```
 
 ### Fields
@@ -161,7 +163,9 @@ image = client.image
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.image.list({})
+results = client.Image().list({})
+for image in results:
+    print(image)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -169,7 +173,7 @@ results = client.image.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.image.load({"id": "image_id"})
+result = client.Image().load({"id": "image_id"})
 ```
 
 ### Common Methods

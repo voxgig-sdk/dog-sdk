@@ -29,18 +29,16 @@ require_once 'dog_sdk.php';
 $client = new DogSDK();
 ```
 
-### 2. List breeds
+### 2. List breed records
 
 ```php
 try {
-    $result = $client->breed()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Breed records — iterate directly.
+    $breeds = $client->Breed()->list();
+    foreach ($breeds as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->breed()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Breed record (throws on error).
+    $breed = $client->Breed()->load(["id" => "example_id"]);
+    print_r($breed);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = DogSDK::test();
+$client = DogSDK::test([
+    "entity" => ["breed" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->breed()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$breed = $client->Breed()->load(["id" => "test01"]);
+print_r($breed);
 ```
 
 ### Use a custom fetch function
@@ -183,7 +186,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Breed` | `($data): BreedEntity` | Create a Breed entity instance. |
-| `Image` | `($data): ImageEntity` | Create a Image entity instance. |
+| `Image` | `($data): ImageEntity` | Create an Image entity instance. |
 
 ### Entity interface
 
@@ -252,7 +255,7 @@ API path: `/breed/{breed}/{subBreed}/images`
 
 ### Breed
 
-Create an instance: `const breed = client.breed`
+Create an instance: `$breed = $client->Breed();`
 
 #### Operations
 
@@ -270,20 +273,22 @@ Create an instance: `const breed = client.breed`
 
 #### Example: Load
 
-```ts
-const breed = await client.breed.load({ id: 'breed_id' })
+```php
+// load() returns the bare Breed record (throws on error).
+$breed = $client->Breed()->load(["id" => "breed_id"]);
 ```
 
 #### Example: List
 
-```ts
-const breeds = await client.breed.list()
+```php
+// list() returns an array of Breed records (throws on error).
+$breeds = $client->Breed()->list();
 ```
 
 
 ### Image
 
-Create an instance: `const image = client.image`
+Create an instance: `$image = $client->Image();`
 
 #### Operations
 
@@ -301,14 +306,16 @@ Create an instance: `const image = client.image`
 
 #### Example: Load
 
-```ts
-const image = await client.image.load({ id: 'image_id' })
+```php
+// load() returns the bare Image record (throws on error).
+$image = $client->Image()->load(["id" => "image_id"]);
 ```
 
 #### Example: List
 
-```ts
-const images = await client.image.list()
+```php
+// list() returns an array of Image records (throws on error).
+$images = $client->Image()->list();
 ```
 
 
@@ -383,7 +390,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$breed = $client->breed();
+$breed = $client->Breed();
 $breed->load(["id" => "example_id"]);
 
 // $breed->dataGet() now returns the loaded breed data

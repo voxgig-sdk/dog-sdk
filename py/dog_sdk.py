@@ -220,41 +220,21 @@ class DogSDK:
         }
 
 
-    @property
-    def breed(self):
-        """Idiomatic facade: client.breed.list() / client.breed.load({"id": ...})."""
-        from entity.breed_entity import BreedEntity
-        cached = getattr(self, "_breed", None)
-        if cached is None:
-            cached = BreedEntity(self, None)
-            self._breed = cached
-        return cached
-
-    def Breed(self, data=None):
-        # Deprecated: use client.breed instead.
+    def Breed(self, data=None) -> "BreedEntity":
+        """Entity factory: client.Breed().list({}) / client.Breed().load({"id": ...})."""
         from entity.breed_entity import BreedEntity
         return BreedEntity(self, data)
 
 
-    @property
-    def image(self):
-        """Idiomatic facade: client.image.list() / client.image.load({"id": ...})."""
-        from entity.image_entity import ImageEntity
-        cached = getattr(self, "_image", None)
-        if cached is None:
-            cached = ImageEntity(self, None)
-            self._image = cached
-        return cached
-
-    def Image(self, data=None):
-        # Deprecated: use client.image instead.
+    def Image(self, data=None) -> "ImageEntity":
+        """Entity factory: client.Image().list({}) / client.Image().load({"id": ...})."""
         from entity.image_entity import ImageEntity
         return ImageEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "DogSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class DogSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.breed_entity import BreedEntity
+    from entity.image_entity import ImageEntity

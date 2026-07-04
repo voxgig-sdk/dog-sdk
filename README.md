@@ -26,9 +26,11 @@ import { DogSDK } from '@voxgig-sdk/dog'
 
 const client = new DogSDK()
 
-// List all breeds
-const breeds = await client.breed.list()
-console.log(breeds.data)
+// List all breeds (returns Breed[])
+const breeds = await client.Breed().list()
+for (const breed of breeds) {
+  console.log(breed)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,12 +86,13 @@ from dog_sdk import DogSDK
 
 client = DogSDK()
 
-# List all breeds
-breeds = client.breed.list()
-print(breeds)
+# List all breeds (returns a list, raises on error)
+breeds = client.Breed().list({})
+for breed in breeds:
+    print(breed)
 
-# Load a specific breed
-breed = client.breed.load({"id": "example_id"})
+# Load a specific breed (returns the record, raises on error)
+breed = client.Breed().load({"id": "example_id"})
 print(breed)
 ```
 
@@ -101,12 +104,12 @@ require_once 'dog_sdk.php';
 
 $client = new DogSDK();
 
-// List all breeds (throws on error)
-$breeds = $client->breed()->list();
+// List all breeds (returns an array; throws on error)
+$breeds = $client->Breed()->list();
 print_r($breeds);
 
-// Load a specific breed
-$breed = $client->breed()->load(["id" => "example_id"]);
+// Load a specific breed (returns the bare record; throws on error)
+$breed = $client->Breed()->load(["id" => "example_id"]);
 print_r($breed);
 ```
 
@@ -129,12 +132,12 @@ require_relative "Dog_sdk"
 
 client = DogSDK.new
 
-# List all breeds
-breeds = client.breed.list
+# List all breeds (returns an Array; raises on error)
+breeds = client.Breed.list
 puts breeds
 
-# Load a specific breed
-breed = client.breed.load({ "id" => "example_id" })
+# Load a specific breed (returns the bare record; raises on error)
+breed = client.Breed.load({ "id" => "example_id" })
 puts breed
 ```
 
@@ -146,11 +149,11 @@ local sdk = require("dog_sdk")
 local client = sdk.new()
 
 -- List all breeds
-local breeds, err = client:breed():list()
+local breeds, err = client:Breed():list()
 print(breeds)
 
 -- Load a specific breed
-local breed, err = client:breed():load({ id = "example_id" })
+local breed, err = client:Breed():load({ id = "example_id" })
 print(breed)
 ```
 
@@ -163,22 +166,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = DogSDK.test()
-const result = await client.breed.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const breed = await client.Breed().load({ id: 'test01' })
+// breed is a bare Breed populated with mock data
+console.log(breed)
 ```
 
 ### Python
 
 ```python
 client = DogSDK.test()
-result = client.breed.load({"id": "test01"})
+breed = client.Breed().load({"id": "test01"})
+print(breed)
 ```
 
 ### PHP
 
 ```php
-$client = DogSDK::test();
-$result = $client->breed()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = DogSDK::test([
+    "entity" => ["breed" => ["test01" => ["id" => "test01"]]],
+]);
+$breed = $client->Breed()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +201,18 @@ result, err := client.Breed(nil).Load(
 ### Ruby
 
 ```ruby
-client = DogSDK.test
-result = client.breed.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = DogSDK.test({
+  "entity" => { "breed" => { "test01" => { "id" => "test01" } } },
+})
+breed = client.Breed.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:breed():load({ id = "test01" })
+local result, err = client:Breed():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +260,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

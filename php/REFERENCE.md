@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## BreedEntity
 
 ```php
-$breed = $client->breed();
+$breed = $client->Breed();
 ```
 
 ### Fields
@@ -106,7 +106,7 @@ $breed = $client->breed();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->breed()->list([]);
+$results = $client->Breed()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -114,7 +114,7 @@ $results = $client->breed()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->breed()->load(["id" => "breed_id"]);
+$result = $client->Breed()->load(["id" => "breed_id"]);
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ Return the entity name.
 ## ImageEntity
 
 ```php
-$image = $client->image();
+$image = $client->Image();
 ```
 
 ### Fields
@@ -167,7 +167,7 @@ $image = $client->image();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->image()->list([]);
+$results = $client->Image()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -175,7 +175,7 @@ $results = $client->image()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->image()->load(["id" => "image_id"]);
+$result = $client->Image()->load(["id" => "image_id"]);
 ```
 
 ### Common Methods

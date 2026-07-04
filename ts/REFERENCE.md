@@ -121,7 +121,7 @@ Alias for `DogSDK.test()`.
 ## BreedEntity
 
 ```ts
-const breed = client.breed
+const breed = client.Breed()
 ```
 
 ### Fields
@@ -138,7 +138,7 @@ const breed = client.breed
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.breed.list()
+const results = await client.Breed().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -146,7 +146,7 @@ const results = await client.breed.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.breed.load({ id: 'breed_id' })
+const result = await client.Breed().load({ id: 'breed_id' })
 ```
 
 ### Common Methods
@@ -180,7 +180,7 @@ Return a copy of the entity options.
 ## ImageEntity
 
 ```ts
-const image = client.image
+const image = client.Image()
 ```
 
 ### Fields
@@ -197,7 +197,7 @@ const image = client.image
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.image.list()
+const results = await client.Image().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -205,7 +205,7 @@ const results = await client.image.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.image.load({ id: 'image_id' })
+const result = await client.Image().load({ id: 'image_id' })
 ```
 
 ### Common Methods

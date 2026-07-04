@@ -208,26 +208,14 @@ class DogSDK
   end
 
 
-  # Idiomatic facade: client.breed.list / client.breed.load({ "id" => ... })
-  def breed
-    require_relative 'entity/breed_entity'
-    @breed ||= BreedEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.breed instead.
+  # Canonical facade: client.Breed.list / client.Breed.load({ "id" => ... })
   def Breed(data = nil)
     require_relative 'entity/breed_entity'
     BreedEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.image.list / client.image.load({ "id" => ... })
-  def image
-    require_relative 'entity/image_entity'
-    @image ||= ImageEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.image instead.
+  # Canonical facade: client.Image.list / client.Image.load({ "id" => ... })
   def Image(data = nil)
     require_relative 'entity/image_entity'
     ImageEntity.new(self, data)

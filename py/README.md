@@ -31,24 +31,28 @@ from dog_sdk import DogSDK
 client = DogSDK()
 ```
 
-### 2. List breeds
+### 2. List breed records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.breed.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    breeds = client.Breed().list({})
+    for breed in breeds:
+        print(breed)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a breed
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.breed.load({"id": "example_id"})
-    print(result)
+    breed = client.Breed().load({"id": "example_id"})
+    print(breed)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = DogSDK.test()
 
-result = client.breed.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+breed = client.Breed().load({"id": "test01"})
+# breed contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -174,7 +179,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Breed` | `(data) -> BreedEntity` | Create a Breed entity instance. |
-| `Image` | `(data) -> ImageEntity` | Create a Image entity instance. |
+| `Image` | `(data) -> ImageEntity` | Create an Image entity instance. |
 
 ### Entity interface
 
@@ -243,7 +248,7 @@ API path: `/breed/{breed}/{subBreed}/images`
 
 ### Breed
 
-Create an instance: `const breed = client.breed`
+Create an instance: `breed = client.Breed()`
 
 #### Operations
 
@@ -261,20 +266,20 @@ Create an instance: `const breed = client.breed`
 
 #### Example: Load
 
-```ts
-const breed = await client.breed.load({ id: 'breed_id' })
+```python
+breed = client.Breed().load({"id": "breed_id"})
 ```
 
 #### Example: List
 
-```ts
-const breeds = await client.breed.list()
+```python
+breeds = client.Breed().list({})
 ```
 
 
 ### Image
 
-Create an instance: `const image = client.image`
+Create an instance: `image = client.Image()`
 
 #### Operations
 
@@ -292,14 +297,14 @@ Create an instance: `const image = client.image`
 
 #### Example: Load
 
-```ts
-const image = await client.image.load({ id: 'image_id' })
+```python
+image = client.Image().load({"id": "image_id"})
 ```
 
 #### Example: List
 
-```ts
-const images = await client.image.list()
+```python
+images = client.Image().list({})
 ```
 
 
@@ -373,7 +378,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-breed = client.breed
+breed = client.Breed()
 breed.load({"id": "example_id"})
 
 # breed.data_get() now returns the loaded breed data

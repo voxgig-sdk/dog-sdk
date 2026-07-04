@@ -233,10 +233,10 @@ class DogSDK
 
     private $_breed = null;
 
-    // Idiomatic facade: $client->breed()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Breed() (PHP method
-    // names are case-insensitive).
-    public function breed($data = null)
+    // Canonical facade: $client->Breed()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->breed()
+    // resolves here too.
+    public function Breed($data = null)
     {
         require_once __DIR__ . '/entity/breed_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class DogSDK
 
     private $_image = null;
 
-    // Idiomatic facade: $client->image()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Image() (PHP method
-    // names are case-insensitive).
-    public function image($data = null)
+    // Canonical facade: $client->Image()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->image()
+    // resolves here too.
+    public function Image($data = null)
     {
         require_once __DIR__ . '/entity/image_entity.php';
         if ($data === null) {

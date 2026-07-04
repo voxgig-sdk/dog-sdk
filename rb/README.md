@@ -28,16 +28,14 @@ require_relative "Dog_sdk"
 client = DogSDK.new
 ```
 
-### 2. List breeds
+### 2. List breed records
 
 ```ruby
 begin
-  result = client.breed.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Breed records — iterate directly.
+  breeds = client.Breed.list
+  breeds.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.breed.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Breed record (raises on error).
+  breed = client.Breed.load({ "id" => "example_id" })
+  puts breed
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = DogSDK.test
+client = DogSDK.test({
+  "entity" => { "breed" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.breed.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+breed = client.Breed.load({ "id" => "test01" })
+puts breed
 ```
 
 ### Use a custom fetch function
@@ -179,7 +182,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Breed` | `(data) -> BreedEntity` | Create a Breed entity instance. |
-| `Image` | `(data) -> ImageEntity` | Create a Image entity instance. |
+| `Image` | `(data) -> ImageEntity` | Create an Image entity instance. |
 
 ### Entity interface
 
@@ -247,7 +250,7 @@ API path: `/breed/{breed}/{subBreed}/images`
 
 ### Breed
 
-Create an instance: `const breed = client.breed`
+Create an instance: `breed = client.Breed`
 
 #### Operations
 
@@ -265,20 +268,22 @@ Create an instance: `const breed = client.breed`
 
 #### Example: Load
 
-```ts
-const breed = await client.breed.load({ id: 'breed_id' })
+```ruby
+# load returns the bare Breed record (raises on error).
+breed = client.Breed.load({ "id" => "breed_id" })
 ```
 
 #### Example: List
 
-```ts
-const breeds = await client.breed.list()
+```ruby
+# list returns an Array of Breed records (raises on error).
+breeds = client.Breed.list
 ```
 
 
 ### Image
 
-Create an instance: `const image = client.image`
+Create an instance: `image = client.Image`
 
 #### Operations
 
@@ -296,14 +301,16 @@ Create an instance: `const image = client.image`
 
 #### Example: Load
 
-```ts
-const image = await client.image.load({ id: 'image_id' })
+```ruby
+# load returns the bare Image record (raises on error).
+image = client.Image.load({ "id" => "image_id" })
 ```
 
 #### Example: List
 
-```ts
-const images = await client.image.list()
+```ruby
+# list returns an Array of Image records (raises on error).
+images = client.Image.list
 ```
 
 
@@ -378,7 +385,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-breed = client.breed
+breed = client.Breed
 breed.load({ "id" => "example_id" })
 
 # breed.data_get now returns the loaded breed data

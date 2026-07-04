@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## BreedEntity
 
 ```ruby
-breed = client.breed
+breed = client.Breed
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ breed = client.breed
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.breed.list(nil)
+results = client.Breed.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -115,7 +115,7 @@ results = client.breed.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.breed.load({ "id" => "breed_id" })
+result = client.Breed.load({ "id" => "breed_id" })
 ```
 
 ### Common Methods
@@ -151,7 +151,7 @@ Return the entity name.
 ## ImageEntity
 
 ```ruby
-image = client.image
+image = client.Image
 ```
 
 ### Fields
@@ -168,7 +168,7 @@ image = client.image
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.image.list(nil)
+results = client.Image.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -176,7 +176,7 @@ results = client.image.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.image.load({ "id" => "image_id" })
+result = client.Image.load({ "id" => "image_id" })
 ```
 
 ### Common Methods
