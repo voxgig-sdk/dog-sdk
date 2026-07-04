@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch BreedLoadMatch
+---@param ctrl? table
+---@return Breed
+---@return string? err
 function BreedEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch BreedListMatch
+---@param ctrl? table
+---@return Breed[]
+---@return string? err
 function BreedEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

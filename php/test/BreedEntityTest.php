@@ -52,14 +52,12 @@ class BreedEntityTest extends TestCase
             "breed" => $setup["idmap"]["breed01"],
         ];
 
-        [$breed_ref01_list_result, $err] = $breed_ref01_ent->list($breed_ref01_match, null);
-        $this->assertNull($err);
+        $breed_ref01_list_result = $breed_ref01_ent->list($breed_ref01_match, null);
         $this->assertIsArray($breed_ref01_list_result);
 
         // LOAD
         $breed_ref01_match_dt0 = [];
-        [$breed_ref01_data_dt0_loaded, $err] = $breed_ref01_ent->load($breed_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $breed_ref01_data_dt0_loaded = $breed_ref01_ent->load($breed_ref01_match_dt0, null);
         $this->assertNotNull($breed_ref01_data_dt0_loaded);
 
     }
@@ -94,7 +92,6 @@ function breed_basic_setup($extra)
         "DOG_TEST_BREED_ENTID" => $idmap,
         "DOG_TEST_LIVE" => "FALSE",
         "DOG_TEST_EXPLAIN" => "FALSE",
-        "DOG_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -106,7 +103,6 @@ function breed_basic_setup($extra)
     if ($env["DOG_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["DOG_APIKEY"],
             ],
             $extra ?? [],
         ]);

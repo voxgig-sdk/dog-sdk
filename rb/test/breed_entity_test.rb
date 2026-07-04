@@ -45,14 +45,12 @@ class BreedEntityTest < Minitest::Test
       "breed" => setup[:idmap]["breed01"],
     }
 
-    breed_ref01_list_result, err = breed_ref01_ent.list(breed_ref01_match, nil)
-    assert_nil err
+    breed_ref01_list_result = breed_ref01_ent.list(breed_ref01_match, nil)
     assert breed_ref01_list_result.is_a?(Array)
 
     # LOAD
     breed_ref01_match_dt0 = {}
-    breed_ref01_data_dt0_loaded, err = breed_ref01_ent.load(breed_ref01_match_dt0, nil)
-    assert_nil err
+    breed_ref01_data_dt0_loaded = breed_ref01_ent.load(breed_ref01_match_dt0, nil)
     assert !breed_ref01_data_dt0_loaded.nil?
 
   end
@@ -91,7 +89,6 @@ def breed_basic_setup(extra)
     "DOG_TEST_BREED_ENTID" => idmap,
     "DOG_TEST_LIVE" => "FALSE",
     "DOG_TEST_EXPLAIN" => "FALSE",
-    "DOG_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -103,7 +100,6 @@ def breed_basic_setup(extra)
   if env["DOG_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["DOG_APIKEY"],
       },
       extra || {},
     ])

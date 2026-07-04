@@ -144,16 +144,23 @@ class DogSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class DogSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class DogSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def breed(self):
+        """Idiomatic facade: client.breed.list() / client.breed.load({"id": ...})."""
+        from entity.breed_entity import BreedEntity
+        cached = getattr(self, "_breed", None)
+        if cached is None:
+            cached = BreedEntity(self, None)
+            self._breed = cached
+        return cached
 
     def Breed(self, data=None):
+        # Deprecated: use client.breed instead.
         from entity.breed_entity import BreedEntity
         return BreedEntity(self, data)
 
 
+    @property
+    def image(self):
+        """Idiomatic facade: client.image.list() / client.image.load({"id": ...})."""
+        from entity.image_entity import ImageEntity
+        cached = getattr(self, "_image", None)
+        if cached is None:
+            cached = ImageEntity(self, None)
+            self._image = cached
+        return cached
+
     def Image(self, data=None):
+        # Deprecated: use client.image instead.
         from entity.image_entity import ImageEntity
         return ImageEntity(self, data)
 

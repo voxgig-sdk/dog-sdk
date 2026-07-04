@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ImageLoadMatch
+---@param ctrl? table
+---@return Image
+---@return string? err
 function ImageEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ImageListMatch
+---@param ctrl? table
+---@return Image[]
+---@return string? err
 function ImageEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -3,6 +3,8 @@
 import { BreedEntity } from './entity/BreedEntity'
 import { ImageEntity } from './entity/ImageEntity'
 
+export type * from './DogTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class DogSDK {
 
 
 
+  _breed?: BreedEntity
+
+  // Idiomatic facade: `client.breed.list()` / `client.breed.load({ id })`.
+  get breed(): BreedEntity {
+    return (this._breed ??= new BreedEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.breed` instead. */
   Breed(data?: any) {
     const self = this
     return new BreedEntity(self,data)
   }
 
 
+  _image?: ImageEntity
+
+  // Idiomatic facade: `client.image.list()` / `client.image.load({ id })`.
+  get image(): ImageEntity {
+    return (this._image ??= new ImageEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.image` instead. */
   Image(data?: any) {
     const self = this
     return new ImageEntity(self,data)

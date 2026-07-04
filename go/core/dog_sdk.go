@@ -245,11 +245,17 @@ func (sdk *DogSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Breed returns a Breed entity bound to this client.
+// Idiomatic usage: client.Breed(nil).List(nil, nil) or
+// client.Breed(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DogSDK) Breed(data map[string]any) DogEntity {
 	return NewBreedEntityFunc(sdk, data)
 }
 
 
+// Image returns a Image entity bound to this client.
+// Idiomatic usage: client.Image(nil).List(nil, nil) or
+// client.Image(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DogSDK) Image(data map[string]any) DogEntity {
 	return NewImageEntityFunc(sdk, data)
 }

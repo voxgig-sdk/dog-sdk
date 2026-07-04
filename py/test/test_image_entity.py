@@ -52,14 +52,12 @@ class TestImageEntity:
             "breed_id": setup["idmap"]["breed01"],
         }
 
-        image_ref01_list_result, err = image_ref01_ent.list(image_ref01_match, None)
-        assert err is None
+        image_ref01_list_result = image_ref01_ent.list(image_ref01_match, None)
         assert isinstance(image_ref01_list_result, list)
 
         # LOAD
         image_ref01_match_dt0 = {}
-        image_ref01_data_dt0_loaded, err = image_ref01_ent.load(image_ref01_match_dt0, None)
-        assert err is None
+        image_ref01_data_dt0_loaded = image_ref01_ent.load(image_ref01_match_dt0, None)
         assert image_ref01_data_dt0_loaded is not None
 
 
@@ -100,7 +98,6 @@ def _image_basic_setup(extra):
         "DOG_TEST_IMAGE_ENTID": idmap,
         "DOG_TEST_LIVE": "FALSE",
         "DOG_TEST_EXPLAIN": "FALSE",
-        "DOG_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -111,7 +108,6 @@ def _image_basic_setup(extra):
     if env.get("DOG_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DOG_APIKEY"),
             },
             extra or {},
         ])

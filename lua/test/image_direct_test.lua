@@ -137,14 +137,12 @@ function image_direct_setup(mockres)
   local env = runner.env_override({
     ["DOG_TEST_IMAGE_ENTID"] = {},
     ["DOG_TEST_LIVE"] = "FALSE",
-    ["DOG_APIKEY"] = "NONE",
   })
 
   local live = env["DOG_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["DOG_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

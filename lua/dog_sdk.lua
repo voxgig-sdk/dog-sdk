@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:breed():list() / client:breed():load({ id = ... })
+function DogSDK:breed(data)
+  local EntityMod = require("entity.breed_entity")
+  if data == nil then
+    if self._breed == nil then
+      self._breed = EntityMod.new(self, nil)
+    end
+    return self._breed
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:breed() instead.
 function DogSDK:Breed(data)
   local EntityMod = require("entity.breed_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:image():list() / client:image():load({ id = ... })
+function DogSDK:image(data)
+  local EntityMod = require("entity.image_entity")
+  if data == nil then
+    if self._image == nil then
+      self._image = EntityMod.new(self, nil)
+    end
+    return self._image
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:image() instead.
 function DogSDK:Image(data)
   local EntityMod = require("entity.image_entity")
   return EntityMod.new(self, data)

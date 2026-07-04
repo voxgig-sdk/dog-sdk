@@ -85,6 +85,27 @@ func (e *ImageEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Image; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ImageEntity) DataTyped(data ...Image) Image {
+	if len(data) > 0 {
+		return typedFrom[Image](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Image](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Image (all fields
+// optional at the wire level).
+func (e *ImageEntity) MatchTyped(match ...Image) Image {
+	if len(match) > 0 {
+		return typedFrom[Image](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Image](e.Match())
+}
+
 
 func (e *ImageEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *ImageEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, e
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// ImageLoadMatch and returns an Image. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *ImageEntity) LoadTyped(reqmatch ImageLoadMatch, ctrl map[string]any) (Image, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Image{}, err
+	}
+	return typedFrom[Image](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *ImageEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, e
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// ImageListMatch and returns []Image. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *ImageEntity) ListTyped(reqmatch ImageListMatch, ctrl map[string]any) ([]Image, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Image](res), nil
 }
 
 

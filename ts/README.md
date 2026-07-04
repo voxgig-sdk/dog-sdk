@@ -9,9 +9,12 @@ The TypeScript SDK for the Dog API — a type-safe, entity-oriented client with 
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/dog
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/dog-sdk/releases](https://github.com/voxgig-sdk/dog-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { DogSDK } from 'dog'
+import { DogSDK } from '@voxgig-sdk/dog'
 
-const client = new DogSDK({
-  apikey: process.env.DOG_APIKEY,
-})
+const client = new DogSDK()
 ```
 
 ### 2. List breeds
 
 ```ts
-const result = await client.Breed().list()
+const result = await client.breed.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a breed
 
 ```ts
-const result = await client.Breed().load({ id: 'example_id' })
+const result = await client.breed.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = DogSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.breed.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new DogSDK({ apikey: '...' })
+const client = new DogSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.breed
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new DogSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -146,7 +146,6 @@ Create a `.env.local` file at the project root:
 
 ```
 DOG_TEST_LIVE=TRUE
-DOG_APIKEY=<your-key>
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new DogSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new DogSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -291,7 +288,7 @@ API path: `/breed/{breed}/{subBreed}/images`
 
 ### Breed
 
-Create an instance: `const breed = client.Breed()`
+Create an instance: `const breed = client.breed`
 
 #### Operations
 
@@ -310,19 +307,19 @@ Create an instance: `const breed = client.Breed()`
 #### Example: Load
 
 ```ts
-const breed = await client.Breed().load({ id: 'breed_id' })
+const breed = await client.breed.load({ id: 'breed_id' })
 ```
 
 #### Example: List
 
 ```ts
-const breeds = await client.Breed().list()
+const breeds = await client.breed.list()
 ```
 
 
 ### Image
 
-Create an instance: `const image = client.Image()`
+Create an instance: `const image = client.image`
 
 #### Operations
 
@@ -341,13 +338,13 @@ Create an instance: `const image = client.Image()`
 #### Example: Load
 
 ```ts
-const image = await client.Image().load({ id: 'image_id' })
+const image = await client.image.load({ id: 'image_id' })
 ```
 
 #### Example: List
 
 ```ts
-const images = await client.Image().list()
+const images = await client.image.list()
 ```
 
 
@@ -408,7 +405,7 @@ dog/
 Import the SDK from the package root:
 
 ```ts
-import { DogSDK } from 'dog'
+import { DogSDK } from '@voxgig-sdk/dog'
 ```
 
 ### Entity state
@@ -418,11 +415,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const breed = client.breed
+await breed.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// breed.data() now returns the loaded breed data
+// breed.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

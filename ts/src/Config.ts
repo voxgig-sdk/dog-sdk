@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://dog.ceo/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -93,7 +89,8 @@ class Config {
                     "name": "id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -187,7 +184,8 @@ class Config {
                     "name": "breed_id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -196,7 +194,8 @@ class Config {
                     "name": "sub_breed",
                     "orig": "sub_breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -237,7 +236,8 @@ class Config {
                     "name": "breed_id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -282,7 +282,8 @@ class Config {
                     "name": "breed_id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -290,7 +291,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 1
                   }
                 ]
               },
@@ -331,7 +333,8 @@ class Config {
                     "name": "breed_id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -340,7 +343,8 @@ class Config {
                     "name": "sub_breed",
                     "orig": "sub_breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -383,7 +387,8 @@ class Config {
                     "name": "breed_id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -422,7 +427,8 @@ class Config {
                     "name": "count",
                     "orig": "count",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
