@@ -10,7 +10,10 @@ export interface Breed {
   status?: string
 }
 
-export type BreedLoadMatch = Partial<Breed>
+export interface BreedLoadMatch {
+  message?: Record<string, any>
+  status?: string
+}
 
 export interface BreedListMatch {
   id: string

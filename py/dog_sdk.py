@@ -221,13 +221,13 @@ class DogSDK:
 
 
     def Breed(self, data=None) -> "BreedEntity":
-        """Entity factory: client.Breed().list({}) / client.Breed().load({"id": ...})."""
+        """Entity factory: client.Breed().list() / client.Breed().load({"id": ...})."""
         from entity.breed_entity import BreedEntity
         return BreedEntity(self, data)
 
 
     def Image(self, data=None) -> "ImageEntity":
-        """Entity factory: client.Image().list({}) / client.Image().load({"id": ...})."""
+        """Entity factory: client.Image().list() / client.Image().load({"id": ...})."""
         from entity.image_entity import ImageEntity
         return ImageEntity(self, data)
 

@@ -128,8 +128,8 @@ const breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `Record<string, any>` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -146,7 +146,7 @@ const results = await client.Breed().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Breed().load({ id: 'breed_id' })
+const result = await client.Breed().load()
 ```
 
 ### Common Methods
@@ -187,8 +187,8 @@ const image = client.Image()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$ARRAY`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `any[]` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -205,7 +205,7 @@ const results = await client.Image().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Image().load({ id: 'image_id' })
+const result = await client.Image().load()
 ```
 
 ### Common Methods

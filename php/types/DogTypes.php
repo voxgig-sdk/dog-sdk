@@ -19,7 +19,7 @@ class Breed
     public ?string $status = null;
 }
 
-/** Match filter for Breed#load (any subset of Breed fields). */
+/** Request payload for Breed#load. */
 class BreedLoadMatch
 {
     public ?array $message = null;

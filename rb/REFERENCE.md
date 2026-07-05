@@ -8,7 +8,7 @@ Complete API reference for the Dog Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'dog_sdk'
+require_relative 'Dog_sdk'
 
 client = DogSDK.new(options)
 ```
@@ -97,17 +97,17 @@ breed = client.Breed
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `Hash` | No |  |
+| `status` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Breed.list(nil)
+results = client.Breed.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -115,7 +115,7 @@ results = client.Breed.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Breed.load({ "id" => "breed_id" })
+result = client.Breed.load()
 ```
 
 ### Common Methods
@@ -158,17 +158,17 @@ image = client.Image
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$ARRAY`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `Array` | No |  |
+| `status` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Image.list(nil)
+results = client.Image.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -176,7 +176,7 @@ results = client.Image.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Image.load({ "id" => "image_id" })
+result = client.Image.load()
 ```
 
 ### Common Methods

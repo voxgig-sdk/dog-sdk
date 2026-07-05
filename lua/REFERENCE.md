@@ -94,8 +94,8 @@ local breed = client:Breed(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `table` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -112,7 +112,7 @@ local results, err = client:Breed():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Breed():load({ id = "breed_id" })
+local result, err = client:Breed():load()
 ```
 
 ### Common Methods
@@ -155,8 +155,8 @@ local image = client:Image(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$ARRAY`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `table` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -173,7 +173,7 @@ local results, err = client:Image():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Image():load({ id = "image_id" })
+local result, err = client:Image():load()
 ```
 
 ### Common Methods

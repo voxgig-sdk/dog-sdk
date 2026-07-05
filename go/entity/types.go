@@ -14,8 +14,7 @@ type Breed struct {
 	Status *string `json:"status,omitempty"`
 }
 
-// BreedLoadMatch mirrors the breed fields as an all-optional match
-// filter (Go analog of Partial<Breed>).
+// BreedLoadMatch is the typed request payload for Breed.LoadTyped.
 type BreedLoadMatch struct {
 	Message *map[string]any `json:"message,omitempty"`
 	Status *string `json:"status,omitempty"`

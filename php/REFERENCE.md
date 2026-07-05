@@ -49,11 +49,11 @@ Create a new `BreedEntity` instance. Pass `null` for no initial data.
 
 Create a new `ImageEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): DogUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,17 +96,17 @@ $breed = $client->Breed();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `array` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Breed()->list([]);
+$results = $client->Breed()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -114,24 +114,24 @@ $results = $client->Breed()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Breed()->load(["id" => "breed_id"]);
+$result = $client->Breed()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -140,7 +140,7 @@ Set the entity match criteria.
 Create a new `BreedEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -157,17 +157,17 @@ $image = $client->Image();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$ARRAY`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `array` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Image()->list([]);
+$results = $client->Image()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -175,24 +175,24 @@ $results = $client->Image()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Image()->load(["id" => "image_id"]);
+$result = $client->Image()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -201,7 +201,7 @@ Set the entity match criteria.
 Create a new `ImageEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -101,8 +101,8 @@ breed := client.Breed(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `map[string]any` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -119,7 +119,7 @@ results, err := client.Breed(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Breed(nil).Load(map[string]any{"id": "breed_id"}, nil)
+result, err := client.Breed(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -156,8 +156,8 @@ image := client.Image(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$ARRAY`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `[]any` | No |  |
+| `status` | `string` | No |  |
 
 ### Operations
 
@@ -174,7 +174,7 @@ results, err := client.Image(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Image(nil).Load(map[string]any{"id": "image_id"}, nil)
+result, err := client.Image(nil).Load(nil, nil)
 ```
 
 ### Common Methods

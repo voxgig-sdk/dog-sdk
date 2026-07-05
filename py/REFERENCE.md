@@ -91,17 +91,17 @@ breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$OBJECT`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `dict` | No |  |
+| `status` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Breed().list({})
+results = client.Breed().list()
 for breed in results:
     print(breed)
 ```
@@ -111,7 +111,7 @@ for breed in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Breed().load({"id": "breed_id"})
+result = client.Breed().load()
 ```
 
 ### Common Methods
@@ -153,17 +153,17 @@ image = client.Image()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | ``$ARRAY`` | No |  |
-| `status` | ``$STRING`` | No |  |
+| `message` | `list` | No |  |
+| `status` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Image().list({})
+results = client.Image().list()
 for image in results:
     print(image)
 ```
@@ -173,7 +173,7 @@ for image in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Image().load({"id": "image_id"})
+result = client.Image().load()
 ```
 
 ### Common Methods

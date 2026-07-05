@@ -21,7 +21,7 @@ Breed = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Breed#load (any subset of Breed fields).
+# Request payload for Breed#load.
 #
 # @!attribute [rw] message
 #   @return [Hash, nil]
