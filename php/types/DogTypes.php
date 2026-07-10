@@ -42,15 +42,14 @@ class Image
 /** Request payload for Image#load. */
 class ImageLoadMatch
 {
-    public string $breed_id;
+    public ?string $breed_id = null;
     public int $count;
-    public string $sub_breed;
 }
 
 /** Request payload for Image#list. */
 class ImageListMatch
 {
     public string $breed_id;
-    public string $sub_breed;
+    public ?string $sub_breed = null;
 }
 

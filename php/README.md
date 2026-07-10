@@ -45,13 +45,15 @@ try {
 }
 ```
 
-### 3. Load a breed
+### 3. Load an image
+
+Image is nested under count, so provide the `count`.
 
 ```php
 try {
-    // load() returns the bare Breed record (throws on error).
-    $breed = $client->Breed()->load();
-    print_r($breed);
+    // load() returns the bare Image record (throws on error).
+    $image = $client->Image()->load(["count" => 1]);
+    print_r($image);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -338,7 +340,7 @@ Create an instance: `$image = $client->Image();`
 
 ```php
 // load() returns the bare Image record (throws on error).
-$image = $client->Image()->load();
+$image = $client->Image()->load(["count" => 1]);
 ```
 
 #### Example: List

@@ -353,7 +353,7 @@ Create an instance: `image := client.Image(nil)`
 #### Example: Load
 
 ```go
-image, err := client.Image(nil).Load(nil, nil)
+image, err := client.Image(nil).Load(map[string]any{"count": 1}, nil)
 if err != nil {
     panic(err)
 }

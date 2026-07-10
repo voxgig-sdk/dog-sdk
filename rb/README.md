@@ -44,13 +44,15 @@ rescue => err
 end
 ```
 
-### 3. Load a breed
+### 3. Load an image
+
+Image is nested under count, so provide the `count`.
 
 ```ruby
 begin
-  # load returns the bare Breed record (raises on error).
-  breed = client.Breed.load()
-  puts breed
+  # load returns the bare Image record (raises on error).
+  image = client.Image.load({ "count" => 1 })
+  puts image
 rescue => err
   warn "load failed: #{err}"
 end
@@ -328,7 +330,7 @@ Create an instance: `image = client.Image`
 
 ```ruby
 # load returns the bare Image record (raises on error).
-image = client.Image.load()
+image = client.Image.load({ "count" => 1 })
 ```
 
 #### Example: List

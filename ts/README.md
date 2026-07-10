@@ -45,14 +45,17 @@ for (const breed of breeds) {
 }
 ```
 
-### 3. Load a breed
+### 3. Load an image
 
+Image is nested under count, so provide the `count`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const breed = await client.Breed().load()
-  console.log(breed)
+  const image = await client.Image().load({
+    count: 1,
+  })
+  console.log(image)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -375,7 +378,7 @@ Create an instance: `const image = client.Image()`
 #### Example: Load
 
 ```ts
-const image = await client.Image().load()
+const image = await client.Image().load({ count: 1 })
 ```
 
 #### Example: List

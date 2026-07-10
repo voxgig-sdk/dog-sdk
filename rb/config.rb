@@ -303,7 +303,6 @@ module DogConfig
                         "orig" => "breed",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -313,7 +312,6 @@ module DogConfig
                         "orig" => "sub_breed",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 1,
                       },
                     ],
                   },
@@ -357,7 +355,6 @@ module DogConfig
                         "orig" => "breed",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },

@@ -15,9 +15,9 @@ main: {
           url: "https://dog.ceo/api"
         }
       ]
+      summary: "The internet's biggest collection of open source dog pictures."
       title: "Dog API"
       version: "1.0.0"
+      website: "https://dog.ceo/dog-api/"
     }
   }
-}
-

@@ -175,7 +175,7 @@ $results = $client->Image()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Image()->load();
+$result = $client->Image()->load(["count" => 1]);
 ```
 
 ### Common Methods

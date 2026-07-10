@@ -50,14 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a breed
+### 3. Load an image
 
+Image is nested under count, so provide the `count`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    breed = client.Breed().load()
-    print(breed)
+    image = client.Image().load({"count": 1})
+    print(image)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -331,7 +332,7 @@ Create an instance: `image = client.Image()`
 #### Example: Load
 
 ```python
-image = client.Image().load()
+image = client.Image().load({"count": 1})
 ```
 
 #### Example: List

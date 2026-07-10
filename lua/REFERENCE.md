@@ -173,7 +173,7 @@ local results, err = client:Image():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Image():load()
+local result, err = client:Image():load({ count = 1 })
 ```
 
 ### Common Methods

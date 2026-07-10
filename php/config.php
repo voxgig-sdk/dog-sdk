@@ -308,7 +308,6 @@ class DogConfig
                         'orig' => 'breed',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                       [
                         'active' => true,
@@ -318,7 +317,6 @@ class DogConfig
                         'orig' => 'sub_breed',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 1,
                       ],
                     ],
                   ],
@@ -362,7 +360,6 @@ class DogConfig
                         'orig' => 'breed',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                     ],
                   ],

@@ -47,12 +47,14 @@ for _, item in ipairs(breeds) do
 end
 ```
 
-### 3. Load a breed
+### 3. Load an image
+
+Image is nested under count, so provide the `count`.
 
 ```lua
-local breed, err = client:Breed():load()
+local image, err = client:Image():load({ count = 1 })
 if err then error(err) end
-print(breed)
+print(image)
 ```
 
 
@@ -317,7 +319,7 @@ Create an instance: `local image = client:Image(nil)`
 #### Example: Load
 
 ```lua
-local image, err = client:Image():load()
+local image, err = client:Image():load({ count = 1 })
 ```
 
 #### Example: List

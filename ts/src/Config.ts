@@ -333,8 +333,7 @@ class Config {
                     "name": "breed_id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
                     "active": true,
@@ -343,8 +342,7 @@ class Config {
                     "name": "sub_breed",
                     "orig": "sub_breed",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -387,8 +385,7 @@ class Config {
                     "name": "breed_id",
                     "orig": "breed",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },

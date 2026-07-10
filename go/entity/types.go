@@ -33,15 +33,14 @@ type Image struct {
 
 // ImageLoadMatch is the typed request payload for Image.LoadTyped.
 type ImageLoadMatch struct {
-	BreedId string `json:"breed_id"`
+	BreedId *string `json:"breed_id,omitempty"`
 	Count int `json:"count"`
-	SubBreed string `json:"sub_breed"`
 }
 
 // ImageListMatch is the typed request payload for Image.ListTyped.
 type ImageListMatch struct {
 	BreedId string `json:"breed_id"`
-	SubBreed string `json:"sub_breed"`
+	SubBreed *string `json:"sub_breed,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

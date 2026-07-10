@@ -176,7 +176,7 @@ results = client.Image.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Image.load()
+result = client.Image.load({ "count" => 1 })
 ```
 
 ### Common Methods

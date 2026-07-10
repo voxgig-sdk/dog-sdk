@@ -205,7 +205,7 @@ const results = await client.Image().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Image().load()
+const result = await client.Image().load({ count: 1 })
 ```
 
 ### Common Methods

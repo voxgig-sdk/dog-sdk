@@ -25,13 +25,12 @@ export interface Image {
 }
 
 export interface ImageLoadMatch {
-  breed_id: string
+  breed_id?: string
   count: number
-  sub_breed: string
 }
 
 export interface ImageListMatch {
   breed_id: string
-  sub_breed: string
+  sub_breed?: string
 }
 

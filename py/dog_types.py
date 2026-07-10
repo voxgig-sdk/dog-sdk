@@ -35,12 +35,17 @@ class Image(TypedDict, total=False):
     status: str
 
 
-class ImageLoadMatch(TypedDict):
-    breed_id: str
+class ImageLoadMatchRequired(TypedDict):
     count: int
-    sub_breed: str
 
 
-class ImageListMatch(TypedDict):
+class ImageLoadMatch(ImageLoadMatchRequired, total=False):
     breed_id: str
+
+
+class ImageListMatchRequired(TypedDict):
+    breed_id: str
+
+
+class ImageListMatch(ImageListMatchRequired, total=False):
     sub_breed: str

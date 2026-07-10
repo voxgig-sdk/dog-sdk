@@ -22,13 +22,12 @@
 ---@field status? string
 
 ---@class ImageLoadMatch
----@field breed_id string
+---@field breed_id? string
 ---@field count number
----@field sub_breed string
 
 ---@class ImageListMatch
 ---@field breed_id string
----@field sub_breed string
+---@field sub_breed? string
 
 local M = {}
 

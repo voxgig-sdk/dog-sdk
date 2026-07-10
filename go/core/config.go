@@ -302,7 +302,6 @@ func MakeConfig() map[string]any {
 											"orig": "breed",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -312,7 +311,6 @@ func MakeConfig() map[string]any {
 											"orig": "sub_breed",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 1,
 										},
 									},
 								},
@@ -356,7 +354,6 @@ func MakeConfig() map[string]any {
 											"orig": "breed",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},

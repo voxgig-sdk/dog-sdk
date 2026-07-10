@@ -302,7 +302,6 @@ local function make_config()
                       ["orig"] = "breed",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -312,7 +311,6 @@ local function make_config()
                       ["orig"] = "sub_breed",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 1,
                     },
                   },
                 },
@@ -356,7 +354,6 @@ local function make_config()
                       ["orig"] = "breed",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },

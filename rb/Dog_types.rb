@@ -59,17 +59,13 @@ Image = Struct.new(
 # Request payload for Image#load.
 #
 # @!attribute [rw] breed_id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] count
 #   @return [Integer]
-#
-# @!attribute [rw] sub_breed
-#   @return [String]
 ImageLoadMatch = Struct.new(
   :breed_id,
   :count,
-  :sub_breed,
   keyword_init: true
 )
 
@@ -79,7 +75,7 @@ ImageLoadMatch = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] sub_breed
-#   @return [String]
+#   @return [String, nil]
 ImageListMatch = Struct.new(
   :breed_id,
   :sub_breed,

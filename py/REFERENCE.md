@@ -173,7 +173,7 @@ for image in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Image().load()
+result = client.Image().load({"count": 1})
 ```
 
 ### Common Methods
