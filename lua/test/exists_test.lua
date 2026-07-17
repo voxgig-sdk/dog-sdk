@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Dog SDK exists test
 
 local sdk = require("dog_sdk")
 
