@@ -35,10 +35,12 @@ const client = new DogSDK()
 
 ### 2. List breed records
 
-`list()` resolves to an array of Breed objects — iterate it directly:
+`list()` resolves to an array of Breed ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
-const breeds = await client.Breed().list()
+const breeds = await client.Breed().list({ id: "example" })
 
 for (const breed of breeds) {
   console.log(breed)
@@ -136,7 +138,8 @@ Create a mock client for unit testing — no server required:
 const client = DogSDK.test()
 
 const breed = await client.Breed().list()
-// breed is a bare entity populated with mock response data
+// breed is the entity, populated with mock response data
+// — call breed.data() for the record itself
 console.log(breed)
 ```
 
@@ -341,7 +344,7 @@ Create an instance: `const breed = client.Breed()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `Record<string, any>` |  |
+| `message` | `any[]` |  |
 | `status` | `string` |  |
 
 #### Example: Load
@@ -353,7 +356,7 @@ const breed = await client.Breed().load()
 #### Example: List
 
 ```ts
-const breeds = await client.Breed().list()
+const breeds = await client.Breed().list({ id: "example" })
 ```
 
 
@@ -384,7 +387,7 @@ const image = await client.Image().load({ count: 1 })
 #### Example: List
 
 ```ts
-const images = await client.Image().list()
+const images = await client.Image().list({ breed_id: "example" })
 ```
 
 

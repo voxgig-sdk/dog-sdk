@@ -91,7 +91,7 @@ breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `dict` | No |  |
+| `message` | `list` | No |  |
 | `status` | `str` | No |  |
 
 ### Operations
@@ -101,7 +101,7 @@ breed = client.Breed()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Breed().list()
+results = client.Breed().list({"id": "example"})
 for breed in results:
     print(breed)
 ```
@@ -163,7 +163,7 @@ image = client.Image()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Image().list()
+results = client.Image().list({"breed_id": "example"})
 for image in results:
     print(image)
 ```

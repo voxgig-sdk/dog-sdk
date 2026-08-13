@@ -308,7 +308,7 @@ Create an instance: `breed := client.Breed(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `map[string]any` |  |
+| `message` | `[]any` |  |
 | `status` | `string` |  |
 
 #### Example: Load

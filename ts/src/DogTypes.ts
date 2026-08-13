@@ -6,17 +6,23 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Breed {
-  message?: Record<string, any>
+  message?: any[]
   status?: string
 }
 
 export interface BreedLoadMatch {
-  message?: Record<string, any>
+  message?: any[]
   status?: string
 }
 
 export interface BreedListMatch {
   id: string
+
+  // Selects a custom action instead of the plain list:
+  //   'list'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Image {
@@ -27,6 +33,12 @@ export interface Image {
 export interface ImageLoadMatch {
   breed_id?: string
   count: number
+
+  // Selects a custom action instead of the plain load:
+  //   'random' | 'random' | 'random'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface ImageListMatch {

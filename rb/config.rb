@@ -30,7 +30,7 @@ module DogConfig
               "active" => true,
               "name" => "message",
               "req" => false,
-              "type" => "`$OBJECT`",
+              "type" => "`$ARRAY`",
               "index$" => 0,
             },
             {
@@ -63,6 +63,7 @@ module DogConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/list",
                   "parts" => [
@@ -83,7 +84,7 @@ module DogConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.message`",
                   },
                   "index$" => 0,
                 },
@@ -97,6 +98,7 @@ module DogConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breeds/list/all",
                   "parts" => [
@@ -107,7 +109,7 @@ module DogConfig
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.message`",
                   },
                   "index$" => 0,
                 },
@@ -168,6 +170,7 @@ module DogConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/{subBreed}/images",
                   "parts" => [
@@ -190,7 +193,7 @@ module DogConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.message`",
                   },
                   "index$" => 0,
                 },
@@ -210,6 +213,7 @@ module DogConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/images",
                   "parts" => [
@@ -229,7 +233,7 @@ module DogConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.message`",
                   },
                   "index$" => 1,
                 },
@@ -265,6 +269,7 @@ module DogConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/images/random/{count}",
                   "parts" => [
@@ -315,6 +320,7 @@ module DogConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/{subBreed}/images/random",
                   "parts" => [
@@ -358,6 +364,7 @@ module DogConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/images/random",
                   "parts" => [
@@ -398,6 +405,7 @@ module DogConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breeds/image/random/{count}",
                   "parts" => [
@@ -420,6 +428,7 @@ module DogConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breeds/image/random",
                   "parts" => [

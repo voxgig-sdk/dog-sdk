@@ -10,9 +10,11 @@ guide: {
       action: "list": {}
       rename: param: "breed": *"id"
       op: list: method: *GET
+      op: list: transform: res: *("`body.message`")|top
     }
     path: "/breeds/list/all": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.message`")|top
     }
   }
 
@@ -20,6 +22,7 @@ guide: {
     path: "/breed/{breed}/images": {
       rename: param: "breed": *"breed_id"
       op: list: method: *GET
+      op: list: transform: res: *("`body.message`")|top
     }
     path: "/breed/{breed}/images/random": {
       action: "random": {}
@@ -34,6 +37,7 @@ guide: {
       rename: param: "breed": *"breed_id"
       rename: param: "subBreed": *"sub_breed"
       op: list: method: *GET
+      op: list: transform: res: *("`body.message`")|top
     }
     path: "/breed/{breed}/{subBreed}/images/random": {
       action: "random": {}

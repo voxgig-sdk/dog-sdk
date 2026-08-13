@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import DogControl
-from core.error import DogError
-from core.result import DogResult
-from core.spec import DogSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import DogControl
+from projectname_sdk.core.error import DogError
+from projectname_sdk.core.result import DogResult
+from projectname_sdk.core.spec import DogSpec
 
 
 # True when this SDK was generated with the named feature.

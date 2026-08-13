@@ -2,17 +2,17 @@
   "existing": {
     "breed": {
       "BREED00": {
-        "message": {},
+        "message": [],
         "status": "s15",
         "id": "BREED00"
       },
       "BREED01": {
-        "message": {},
+        "message": [],
         "status": "s29",
         "id": "BREED01"
       },
       "BREED02": {
-        "message": {},
+        "message": [],
         "status": "s3d",
         "id": "BREED02"
       }
@@ -21,7 +21,7 @@
   "new": {
     "breed": {
       "breed_ref01": {
-        "message": {},
+        "message": [],
         "status": "s51"
       }
     }

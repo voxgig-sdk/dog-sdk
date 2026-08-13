@@ -64,12 +64,12 @@ describe('BreedEntity', async () => {
     const breed_ref01_match: any = {}
     breed_ref01_match['breed'] = setup.idmap['breed01']
 
-    const breed_ref01_list = await breed_ref01_ent.list(breed_ref01_match)
+    const breed_ref01_list = (await breed_ref01_ent.list(breed_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const breed_ref01_match_dt0: any = {}
-    const breed_ref01_data_dt0 = await breed_ref01_ent.load(breed_ref01_match_dt0)
+    const breed_ref01_data_dt0 = (await breed_ref01_ent.load(breed_ref01_match_dt0)).data()
     assert(null != breed_ref01_data_dt0)
 
 

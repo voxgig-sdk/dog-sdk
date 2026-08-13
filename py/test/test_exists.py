@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Dog SDK exists test
 
 import pytest
 from dog_sdk import DogSDK

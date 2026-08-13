@@ -128,8 +128,28 @@ const breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `Record<string, any>` | No |  |
+| `message` | `any[]` | No |  |
 | `status` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `list` | `/breed/{breed}/list` | `client.Breed().list({ $action: 'list', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Breed record — check the API definition for its shape.
+
+```ts
+const result = await client.Breed().list({
+  $action: 'list',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -138,7 +158,7 @@ const breed = client.Breed()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Breed().list()
+const results = await client.Breed().list({ id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -190,6 +210,28 @@ const image = client.Image()
 | `message` | `any[]` | No |  |
 | `status` | `string` | No |  |
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `random` | `/breed/{breed}/{subBreed}/images/random` | `client.Image().load({ $action: 'random', ... })` |
+| `random` | `/breed/{breed}/images/random` | `client.Image().load({ $action: 'random', ... })` |
+| `random` | `/breeds/image/random` | `client.Image().load({ $action: 'random', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Image record — check the API definition for its shape.
+
+```ts
+const result = await client.Image().load({
+  $action: 'random',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `list(match: object, ctrl?: object)`
@@ -197,7 +239,7 @@ const image = client.Image()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Image().list()
+const results = await client.Image().list({ breed_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`

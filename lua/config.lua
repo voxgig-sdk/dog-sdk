@@ -29,7 +29,7 @@ local function make_config()
             ["active"] = true,
             ["name"] = "message",
             ["req"] = false,
-            ["type"] = "`$OBJECT`",
+            ["type"] = "`$ARRAY`",
             ["index$"] = 0,
           },
           {
@@ -62,6 +62,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/list",
                 ["parts"] = {
@@ -82,7 +83,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.message`",
                 },
                 ["index$"] = 0,
               },
@@ -96,6 +97,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breeds/list/all",
                 ["parts"] = {
@@ -106,7 +108,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.message`",
                 },
                 ["index$"] = 0,
               },
@@ -167,6 +169,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/{subBreed}/images",
                 ["parts"] = {
@@ -189,7 +192,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.message`",
                 },
                 ["index$"] = 0,
               },
@@ -209,6 +212,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/images",
                 ["parts"] = {
@@ -228,7 +232,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.message`",
                 },
                 ["index$"] = 1,
               },
@@ -264,6 +268,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/images/random/{count}",
                 ["parts"] = {
@@ -314,6 +319,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/{subBreed}/images/random",
                 ["parts"] = {
@@ -357,6 +363,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/images/random",
                 ["parts"] = {
@@ -397,6 +404,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breeds/image/random/{count}",
                 ["parts"] = {
@@ -419,6 +427,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breeds/image/random",
                 ["parts"] = {

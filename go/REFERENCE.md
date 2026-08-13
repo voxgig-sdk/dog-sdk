@@ -102,7 +102,7 @@ fmt.Println(breed.GetName()) // "breed"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `map[string]any` | No |  |
+| `message` | `[]any` | No |  |
 | `status` | `string` | No |  |
 
 ### Operations

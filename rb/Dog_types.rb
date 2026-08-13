@@ -11,7 +11,7 @@
 # Breed entity data model.
 #
 # @!attribute [rw] message
-#   @return [Hash, nil]
+#   @return [Array, nil]
 #
 # @!attribute [rw] status
 #   @return [String, nil]
@@ -24,7 +24,7 @@ Breed = Struct.new(
 # Request payload for Breed#load.
 #
 # @!attribute [rw] message
-#   @return [Hash, nil]
+#   @return [Array, nil]
 #
 # @!attribute [rw] status
 #   @return [String, nil]

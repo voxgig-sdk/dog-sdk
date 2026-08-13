@@ -16,11 +16,11 @@
 import pytest
 
 from dog_sdk import DogSDK
-from core.error import DogError
-from core.result import DogResult
-from core.response import DogResponse
-from core.spec import DogSpec
-from feature.base_feature import DogBaseFeature
+from dog_sdk.core.error import DogError
+from dog_sdk.core.result import DogResult
+from dog_sdk.core.response import DogResponse
+from dog_sdk.core.spec import DogSpec
+from dog_sdk.feature.base_feature import DogBaseFeature
 
 
 def _client():

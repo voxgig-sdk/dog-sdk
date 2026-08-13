@@ -50,7 +50,7 @@ Image is nested under count, so provide the `count`.
 
 ```ruby
 begin
-  # load returns the bare Image record (raises on error).
+  # load returns the ENTITY — call data_get for the Image record (raises on error).
   image = client.Image.load({ "count" => 1 })
   puts image
 rescue => err
@@ -133,7 +133,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = DogSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 breed = client.Breed.list()
 puts breed
 ```
@@ -290,13 +291,13 @@ Create an instance: `breed = client.Breed`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `Hash` |  |
+| `message` | `Array` |  |
 | `status` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Breed record (raises on error).
+# load returns the ENTITY — call data_get for the Breed record (raises on error).
 breed = client.Breed.load()
 ```
 
@@ -329,7 +330,7 @@ Create an instance: `image = client.Image`
 #### Example: Load
 
 ```ruby
-# load returns the bare Image record (raises on error).
+# load returns the ENTITY — call data_get for the Image record (raises on error).
 image = client.Image.load({ "count" => 1 })
 ```
 

@@ -35,7 +35,7 @@ class DogConfig
               'active' => true,
               'name' => 'message',
               'req' => false,
-              'type' => '`$OBJECT`',
+              'type' => '`$ARRAY`',
               'index$' => 0,
             ],
             [
@@ -68,6 +68,7 @@ class DogConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/list',
                   'parts' => [
@@ -88,7 +89,7 @@ class DogConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.message`',
                   ],
                   'index$' => 0,
                 ],
@@ -102,6 +103,7 @@ class DogConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breeds/list/all',
                   'parts' => [
@@ -112,7 +114,7 @@ class DogConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.message`',
                   ],
                   'index$' => 0,
                 ],
@@ -173,6 +175,7 @@ class DogConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/{subBreed}/images',
                   'parts' => [
@@ -195,7 +198,7 @@ class DogConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.message`',
                   ],
                   'index$' => 0,
                 ],
@@ -215,6 +218,7 @@ class DogConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/images',
                   'parts' => [
@@ -234,7 +238,7 @@ class DogConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.message`',
                   ],
                   'index$' => 1,
                 ],
@@ -270,6 +274,7 @@ class DogConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/images/random/{count}',
                   'parts' => [
@@ -320,6 +325,7 @@ class DogConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/{subBreed}/images/random',
                   'parts' => [
@@ -363,6 +369,7 @@ class DogConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/images/random',
                   'parts' => [
@@ -403,6 +410,7 @@ class DogConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breeds/image/random/{count}',
                   'parts' => [
@@ -425,6 +433,7 @@ class DogConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breeds/image/random',
                   'parts' => [

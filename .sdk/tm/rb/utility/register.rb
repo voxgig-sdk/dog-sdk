@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ DogUtility.registrar = ->(u) {
   u.prepare_params = DogUtilities::PrepareParams
   u.prepare_path = DogUtilities::PreparePath
   u.prepare_query = DogUtilities::PrepareQuery
+  u.graphql_body = DogUtilities::GraphqlBody
+  u.graphql_errors = DogUtilities::GraphqlErrors
   u.result_basic = DogUtilities::ResultBasic
   u.result_body = DogUtilities::ResultBody
   u.result_headers = DogUtilities::ResultHeaders

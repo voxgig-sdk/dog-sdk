@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Dog',
   }
 
 
@@ -61,7 +61,7 @@ class Config {
           "active": true,
           "name": "message",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$ARRAY`",
           "index$": 0
         },
         {
@@ -94,6 +94,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/list",
               "parts": [
@@ -114,7 +115,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.message`"
               },
               "index$": 0
             }
@@ -128,6 +129,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/breeds/list/all",
               "parts": [
@@ -138,7 +140,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.message`"
               },
               "index$": 0
             }
@@ -199,6 +201,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/{subBreed}/images",
               "parts": [
@@ -221,7 +224,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.message`"
               },
               "index$": 0
             },
@@ -241,6 +244,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/images",
               "parts": [
@@ -260,7 +264,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.message`"
               },
               "index$": 1
             }
@@ -296,6 +300,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/images/random/{count}",
               "parts": [
@@ -346,6 +351,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/{subBreed}/images/random",
               "parts": [
@@ -389,6 +395,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/images/random",
               "parts": [
@@ -429,6 +436,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/breeds/image/random/{count}",
               "parts": [
@@ -451,6 +459,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/breeds/image/random",
               "parts": [

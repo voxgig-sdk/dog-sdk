@@ -97,7 +97,7 @@ breed = client.Breed
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `Hash` | No |  |
+| `message` | `Array` | No |  |
 | `status` | `String` | No |  |
 
 ### Operations

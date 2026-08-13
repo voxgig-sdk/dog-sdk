@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new DogSDK()
-const items = await client.Breed().list()
+const items = await client.Breed().list({ id: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = DogSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = DogSDK.test({
+  entity: {
+    breed: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const breeds = await client.Breed().list()
-// breeds is an array of bare Breed records populated with mock data
+// breeds is an array of Breed entities, populated with mock data
+// — call breeds[0].data() for the record itself
 console.log(breeds)
 ```
 
@@ -110,8 +119,8 @@ import { DogSDK } from '@voxgig-sdk/dog'
 
 const client = new DogSDK()
 
-// List all breeds (returns Breed[])
-const breeds = await client.Breed().list()
+// List all breeds (returns BreedEntity[] — .data() for the record)
+const breeds = await client.Breed().list({ id: "example" })
 for (const breed of breeds) {
   console.log(breed)
 }
@@ -177,7 +186,7 @@ from dog_sdk import DogSDK
 client = DogSDK()
 
 # List all breeds (returns a list, raises on error)
-breeds = client.Breed().list()
+breeds = client.Breed().list({"id": "example"})
 for breed in breeds:
     print(breed)
 
@@ -198,7 +207,7 @@ $client = new DogSDK();
 $breeds = $client->Breed()->list();
 print_r($breeds);
 
-// Load a specific breed (returns the bare record; throws on error)
+// Load a specific breed (returns the ENTITY; call data_get() for the record; throws on error)
 $breed = $client->Breed()->load();
 print_r($breed);
 ```
@@ -238,7 +247,7 @@ client = DogSDK.new
 breeds = client.Breed.list
 puts breeds
 
-# Load a specific breed (returns the bare record; raises on error)
+# Load a specific breed (returns the ENTITY; call data_get for the record)
 breed = client.Breed.load()
 puts breed
 ```
@@ -375,6 +384,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://dog.ceo/dog-api/](https://dog.ceo/dog-api/)
 
