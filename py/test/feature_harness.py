@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from dog_sdk.config import make_config
+from dog_sdk.config import shared_config
 from dog_sdk.features import _make_feature
 from dog_sdk.core.control import DogControl
 from dog_sdk.core.error import DogError
@@ -24,7 +24,7 @@ from dog_sdk.core.spec import DogSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

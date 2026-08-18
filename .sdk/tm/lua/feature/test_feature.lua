@@ -1,4 +1,4 @@
--- ProjectName SDK test feature
+-- Dog SDK test feature
 
 local vs = require("utility.struct.struct")
 local BaseFeature = require("feature.base_feature")

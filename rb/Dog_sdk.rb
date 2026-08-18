@@ -28,7 +28,7 @@ class DogSDK
     utility = DogUtility.new
     @_utility = utility
 
-    config = DogConfig.make_config
+    config = DogConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -40,7 +40,7 @@ class DogSDK
         $utility = new DogUtility();
         $this->_utility = $utility;
 
-        $config = DogConfig::make_config();
+        $config = DogConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
