@@ -96,7 +96,7 @@ $breed = $client->Breed();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `array` | No |  |
+| `message` | `array` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
 ### Operations
@@ -157,7 +157,7 @@ $image = $client->Image();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `array` | No |  |
+| `message` | `array` | No | Array of random image URLs for the breed |
 | `status` | `string` | No |  |
 
 ### Operations

@@ -8,6 +8,7 @@ main: kit: entity: image: {
     {
       name: "message"
       req: false
+      short: "Array of random image URLs for the breed"
       type: "`$ARRAY`"
     }
     {

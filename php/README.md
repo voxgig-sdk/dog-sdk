@@ -263,7 +263,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of sub-breed names |
 | `status` |  |
 
 Operations: List, Load.
@@ -274,7 +274,7 @@ API path: `/breed/{breed}/list`
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of random image URLs for the breed |
 | `status` |  |
 
 Operations: List, Load.
@@ -301,7 +301,7 @@ Create an instance: `$breed = $client->Breed();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `array` |  |
+| `message` | `array` | Array of sub-breed names |
 | `status` | `string` |  |
 
 #### Example: Load
@@ -334,7 +334,7 @@ Create an instance: `$image = $client->Image();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `array` |  |
+| `message` | `array` | Array of random image URLs for the breed |
 | `status` | `string` |  |
 
 #### Example: Load

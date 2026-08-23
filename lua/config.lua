@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "Dog",
+      slug = "dog",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -30,6 +33,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "message",
+            ["short"] = "Array of sub-breed names",
             ["type"] = "`$ARRAY`",
           },
           {
@@ -113,6 +117,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "message",
+            ["short"] = "Array of random image URLs for the breed",
             ["type"] = "`$ARRAY`",
           },
           {

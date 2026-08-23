@@ -8,6 +8,7 @@ main: kit: entity: breed: {
     {
       name: "message"
       req: false
+      short: "Array of sub-breed names"
       type: "`$ARRAY`"
     }
     {

@@ -253,7 +253,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of sub-breed names |
 | `status` |  |
 
 Operations: List, Load.
@@ -264,7 +264,7 @@ API path: `/breed/{breed}/list`
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of random image URLs for the breed |
 | `status` |  |
 
 Operations: List, Load.
@@ -291,7 +291,7 @@ Create an instance: `breed = client.Breed`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `Array` |  |
+| `message` | `Array` | Array of sub-breed names |
 | `status` | `String` |  |
 
 #### Example: Load
@@ -324,7 +324,7 @@ Create an instance: `image = client.Image`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `Array` |  |
+| `message` | `Array` | Array of random image URLs for the breed |
 | `status` | `String` |  |
 
 #### Example: Load

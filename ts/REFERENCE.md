@@ -128,7 +128,7 @@ const breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `any[]` | No |  |
+| `message` | `any[]` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
 ### Actions
@@ -207,7 +207,7 @@ const image = client.Image()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `any[]` | No |  |
+| `message` | `any[]` | No | Array of random image URLs for the breed |
 | `status` | `string` | No |  |
 
 ### Actions

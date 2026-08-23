@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -306,7 +306,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of sub-breed names |
 | `status` |  |
 
 Operations: list, load.
@@ -317,7 +317,7 @@ API path: `/breed/{breed}/list`
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of random image URLs for the breed |
 | `status` |  |
 
 Operations: list, load.
@@ -344,7 +344,7 @@ Create an instance: `const breed = client.Breed()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `any[]` |  |
+| `message` | `any[]` | Array of sub-breed names |
 | `status` | `string` |  |
 
 #### Example: Load
@@ -375,7 +375,7 @@ Create an instance: `const image = client.Image()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `any[]` |  |
+| `message` | `any[]` | Array of random image URLs for the breed |
 | `status` | `string` |  |
 
 #### Example: Load

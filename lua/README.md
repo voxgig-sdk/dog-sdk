@@ -244,7 +244,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of sub-breed names |
 | `status` |  |
 
 Operations: List, Load.
@@ -255,7 +255,7 @@ API path: `/breed/{breed}/list`
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of random image URLs for the breed |
 | `status` |  |
 
 Operations: List, Load.
@@ -282,7 +282,7 @@ Create an instance: `local breed = client:Breed(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `table` |  |
+| `message` | `table` | Array of sub-breed names |
 | `status` | `string` |  |
 
 #### Example: Load
@@ -313,7 +313,7 @@ Create an instance: `local image = client:Image(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `table` |  |
+| `message` | `table` | Array of random image URLs for the breed |
 | `status` | `string` |  |
 
 #### Example: Load

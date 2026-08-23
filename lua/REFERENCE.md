@@ -94,7 +94,7 @@ local breed = client:Breed(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `table` | No |  |
+| `message` | `table` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
 ### Operations
@@ -155,7 +155,7 @@ local image = client:Image(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `table` | No |  |
+| `message` | `table` | No | Array of random image URLs for the breed |
 | `status` | `string` | No |  |
 
 ### Operations

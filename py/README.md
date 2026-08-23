@@ -258,7 +258,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of sub-breed names |
 | `status` |  |
 
 Operations: List, Load.
@@ -269,7 +269,7 @@ API path: `/breed/{breed}/list`
 
 | Field | Description |
 | --- | --- |
-| `message` |  |
+| `message` | Array of random image URLs for the breed |
 | `status` |  |
 
 Operations: List, Load.
@@ -296,7 +296,7 @@ Create an instance: `breed = client.Breed()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `list` |  |
+| `message` | `list` | Array of sub-breed names |
 | `status` | `str` |  |
 
 #### Example: Load
@@ -327,7 +327,7 @@ Create an instance: `image = client.Image()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `list` |  |
+| `message` | `list` | Array of random image URLs for the breed |
 | `status` | `str` |  |
 
 #### Example: Load

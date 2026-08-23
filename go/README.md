@@ -6,7 +6,7 @@ The Golang SDK for the Dog API — an entity-oriented client using standard Go c
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Breed(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -270,7 +270,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"message"` |  |
+| `"message"` | Array of sub-breed names |
 | `"status"` |  |
 
 Operations: List, Load.
@@ -281,7 +281,7 @@ API path: `/breed/{breed}/list`
 
 | Field | Description |
 | --- | --- |
-| `"message"` |  |
+| `"message"` | Array of random image URLs for the breed |
 | `"status"` |  |
 
 Operations: List, Load.
@@ -308,7 +308,7 @@ Create an instance: `breed := client.Breed(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `[]any` |  |
+| `message` | `[]any` | Array of sub-breed names |
 | `status` | `string` |  |
 
 #### Example: Load
@@ -347,7 +347,7 @@ Create an instance: `image := client.Image(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `message` | `[]any` |  |
+| `message` | `[]any` | Array of random image URLs for the breed |
 | `status` | `string` |  |
 
 #### Example: Load

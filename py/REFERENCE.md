@@ -91,7 +91,7 @@ breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `list` | No |  |
+| `message` | `list` | No | Array of sub-breed names |
 | `status` | `str` | No |  |
 
 ### Operations
@@ -153,7 +153,7 @@ image = client.Image()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `list` | No |  |
+| `message` | `list` | No | Array of random image URLs for the breed |
 | `status` | `str` | No |  |
 
 ### Operations

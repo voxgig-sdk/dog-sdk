@@ -102,7 +102,7 @@ fmt.Println(breed.GetName()) // "breed"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `[]any` | No |  |
+| `message` | `[]any` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
 ### Operations
@@ -166,7 +166,7 @@ fmt.Println(image.GetName()) // "image"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `message` | `[]any` | No |  |
+| `message` | `[]any` | No | Array of random image URLs for the breed |
 | `status` | `string` | No |  |
 
 ### Operations

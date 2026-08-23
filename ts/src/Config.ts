@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Dog',
+        slug: "dog",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -59,6 +70,7 @@ class Config {
       "fields": [
         {
           "name": "message",
+          "short": "Array of sub-breed names",
           "type": "`$ARRAY`"
         },
         {
@@ -142,6 +154,7 @@ class Config {
       "fields": [
         {
           "name": "message",
+          "short": "Array of random image URLs for the breed",
           "type": "`$ARRAY`"
         },
         {
