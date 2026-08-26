@@ -91,6 +91,7 @@ breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `str` | No |  |
 | `message` | `list` | No | Array of sub-breed names |
 | `status` | `str` | No |  |
 
@@ -101,7 +102,7 @@ breed = client.Breed()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Breed().list({"id": "example"})
+results = client.Breed().list({"id": "example_id"})
 for breed in results:
     print(breed)
 ```
@@ -111,7 +112,7 @@ for breed in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Breed().load()
+result = client.Breed().load({"id": "breed_id"})
 ```
 
 ### Common Methods

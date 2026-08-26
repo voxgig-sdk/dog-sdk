@@ -123,13 +123,19 @@ func TestBreedEntity(t *testing.T) {
 		}
 
 		// LOAD
-		breedRef01MatchDt0 := map[string]any{}
+		breedRef01MatchDt0 := map[string]any{
+			"id": breedRef01Data["id"],
+		}
 		breedRef01DataDt0Loaded, err := breedRef01Ent.Load(breedRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if breedRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		breedRef01DataDt0LoadResult := core.ToMapAny(entityData(breedRef01DataDt0Loaded))
+		if breedRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if breedRef01DataDt0LoadResult["id"] != breedRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

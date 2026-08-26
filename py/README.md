@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    breeds = client.Breed().list({"id": "example"})
+    breeds = client.Breed().list({"id": "example_id"})
     for breed in breeds:
         print(breed)
 except Exception as err:
@@ -258,6 +258,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `message` | Array of sub-breed names |
 | `status` |  |
 
@@ -296,19 +297,20 @@ Create an instance: `breed = client.Breed()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `str` |  |
 | `message` | `list` | Array of sub-breed names |
 | `status` | `str` |  |
 
 #### Example: Load
 
 ```python
-breed = client.Breed().load()
+breed = client.Breed().load({"id": "breed_id"})
 ```
 
 #### Example: List
 
 ```python
-breeds = client.Breed().list({"id": "example"})
+breeds = client.Breed().list({"id": "example_id"})
 ```
 
 

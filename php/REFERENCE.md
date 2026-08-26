@@ -96,6 +96,7 @@ $breed = $client->Breed();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `message` | `array` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
@@ -114,7 +115,7 @@ $results = $client->Breed()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Breed()->load();
+$result = $client->Breed()->load(["id" => "breed_id"]);
 ```
 
 ### Common Methods

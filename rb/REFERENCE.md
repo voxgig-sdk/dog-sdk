@@ -97,6 +97,7 @@ breed = client.Breed
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `String` | No |  |
 | `message` | `Array` | No | Array of sub-breed names |
 | `status` | `String` | No |  |
 
@@ -115,7 +116,7 @@ results = client.Breed.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Breed.load()
+result = client.Breed.load({ "id" => "breed_id" })
 ```
 
 ### Common Methods

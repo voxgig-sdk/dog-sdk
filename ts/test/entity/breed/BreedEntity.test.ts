@@ -69,8 +69,9 @@ describe('BreedEntity', async () => {
 
     // LOAD
     const breed_ref01_match_dt0: any = {}
+    breed_ref01_match_dt0.id = breed_ref01_data.id
     const breed_ref01_data_dt0 = (await breed_ref01_ent.load(breed_ref01_match_dt0)).data()
-    assert(null != breed_ref01_data_dt0)
+    assert(breed_ref01_data_dt0.id === breed_ref01_data.id)
 
 
   })

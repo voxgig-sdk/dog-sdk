@@ -43,7 +43,7 @@ local breeds, err = client:Breed():list()
 if err then error(err) end
 
 for _, item in ipairs(breeds) do
-  print(item["status"])
+  print(item["id"], item["status"])
 end
 ```
 
@@ -231,7 +231,7 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local breed, err = client:Breed():load()
+    local breed, err = client:Breed():load({ id = "example_id" })
     if err then error(err) end
     -- breed is the loaded record
 
@@ -244,6 +244,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `message` | Array of sub-breed names |
 | `status` |  |
 
@@ -282,13 +283,14 @@ Create an instance: `local breed = client:Breed(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `message` | `table` | Array of sub-breed names |
 | `status` | `string` |  |
 
 #### Example: Load
 
 ```lua
-local breed, err = client:Breed():load()
+local breed, err = client:Breed():load({ id = "breed_id" })
 ```
 
 #### Example: List

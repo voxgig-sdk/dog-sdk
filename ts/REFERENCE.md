@@ -128,6 +128,7 @@ const breed = client.Breed()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `message` | `any[]` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
@@ -158,7 +159,7 @@ const result = await client.Breed().list({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Breed().list({ id: "example" })
+const results = await client.Breed().list({ id: "example_id" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -166,7 +167,7 @@ const results = await client.Breed().list({ id: "example" })
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Breed().load()
+const result = await client.Breed().load({ id: 'breed_id' })
 ```
 
 ### Common Methods

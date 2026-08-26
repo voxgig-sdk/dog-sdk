@@ -40,7 +40,7 @@ resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const breeds = await client.Breed().list({ id: "example" })
+const breeds = await client.Breed().list({ id: "example_id" })
 
 for (const breed of breeds) {
   console.log(breed)
@@ -162,7 +162,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -306,6 +306,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `message` | Array of sub-breed names |
 | `status` |  |
 
@@ -344,19 +345,20 @@ Create an instance: `const breed = client.Breed()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `message` | `any[]` | Array of sub-breed names |
 | `status` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const breed = await client.Breed().load()
+const breed = await client.Breed().load({ id: 'breed_id' })
 ```
 
 #### Example: List
 
 ```ts
-const breeds = await client.Breed().list({ id: "example" })
+const breeds = await client.Breed().list({ id: "example_id" })
 ```
 
 

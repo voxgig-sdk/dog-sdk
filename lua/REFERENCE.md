@@ -94,6 +94,7 @@ local breed = client:Breed(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `message` | `table` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
@@ -112,7 +113,7 @@ local results, err = client:Breed():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Breed():load()
+local result, err = client:Breed():load({ id = "breed_id" })
 ```
 
 ### Common Methods

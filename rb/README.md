@@ -37,7 +37,7 @@ begin
   # list returns an Array of Breed records — iterate directly.
   breeds = client.Breed.list
   breeds.each do |item|
-    puts "#{item["message"]}"
+    puts "#{item["id"]} #{item["message"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -128,10 +128,13 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = DogSDK.test
+client = DogSDK.test({
+  "entity" => { "breed" => { "test01" => { "id" => "test01" } } },
+})
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
@@ -253,6 +256,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `message` | Array of sub-breed names |
 | `status` |  |
 
@@ -291,6 +295,7 @@ Create an instance: `breed = client.Breed`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `String` |  |
 | `message` | `Array` | Array of sub-breed names |
 | `status` | `String` |  |
 
@@ -298,7 +303,7 @@ Create an instance: `breed = client.Breed`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Breed record (raises on error).
-breed = client.Breed.load()
+breed = client.Breed.load({ "id" => "breed_id" })
 ```
 
 #### Example: List

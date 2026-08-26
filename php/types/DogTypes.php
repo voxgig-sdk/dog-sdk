@@ -15,6 +15,7 @@ declare(strict_types=1);
 /** Breed entity data model. */
 class Breed
 {
+    public ?string $id = null;
     public ?array $message = null;
     public ?string $status = null;
 }
@@ -22,6 +23,7 @@ class Breed
 /** Request payload for Breed#load. */
 class BreedLoadMatch
 {
+    public string $id;
     public ?array $message = null;
     public ?string $status = null;
 }

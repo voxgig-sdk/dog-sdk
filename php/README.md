@@ -38,7 +38,7 @@ try {
     // list() returns an array of Breed records — iterate directly.
     $breeds = $client->Breed()->list();
     foreach ($breeds as $item) {
-        echo $item["message"] . "\n";
+        echo $item["id"] . " " . $item["message"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -134,10 +134,13 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = DogSDK::test();
+$client = DogSDK::test([
+    "entity" => ["breed" => ["test01" => ["id" => "test01"]]],
+]);
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
@@ -263,6 +266,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `id` |  |
 | `message` | Array of sub-breed names |
 | `status` |  |
 
@@ -301,6 +305,7 @@ Create an instance: `$breed = $client->Breed();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `message` | `array` | Array of sub-breed names |
 | `status` | `string` |  |
 
@@ -308,7 +313,7 @@ Create an instance: `$breed = $client->Breed();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Breed record (throws on error).
-$breed = $client->Breed()->load();
+$breed = $client->Breed()->load(["id" => "breed_id"]);
 ```
 
 #### Example: List

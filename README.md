@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new DogSDK()
-const items = await client.Breed().list({ id: "example" })
+const items = await client.Breed().list({ id: "example_id" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -66,7 +66,7 @@ print(breeds)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = DogSDK::test([
-    "entity" => ["breed" => ["test01" => []]],
+    "entity" => ["breed" => ["test01" => ["id" => "test01"]]],
 ]);
 $breeds = $client->Breed()->list();
 ```
@@ -85,7 +85,7 @@ result, err := client.Breed(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = DogSDK.test({
-  "entity" => { "breed" => { "test01" => {} } },
+  "entity" => { "breed" => { "test01" => { "id" => "test01" } } },
 })
 breeds = client.Breed.list()
 ```
@@ -120,7 +120,7 @@ import { DogSDK } from '@voxgig-sdk/dog'
 const client = new DogSDK()
 
 // List all breeds (returns BreedEntity[] — .data() for the record)
-const breeds = await client.Breed().list({ id: "example" })
+const breeds = await client.Breed().list({ id: "example_id" })
 for (const breed of breeds) {
   console.log(breed)
 }
@@ -186,12 +186,12 @@ from dog_sdk import DogSDK
 client = DogSDK()
 
 # List all breeds (returns a list, raises on error)
-breeds = client.Breed().list({"id": "example"})
+breeds = client.Breed().list({"id": "example_id"})
 for breed in breeds:
     print(breed)
 
 # Load a specific breed (returns the record, raises on error)
-breed = client.Breed().load()
+breed = client.Breed().load({"id": "example_id"})
 print(breed)
 ```
 
@@ -208,7 +208,7 @@ $breeds = $client->Breed()->list();
 print_r($breeds);
 
 // Load a specific breed (returns the ENTITY; call data_get() for the record; throws on error)
-$breed = $client->Breed()->load();
+$breed = $client->Breed()->load(["id" => "example_id"]);
 print_r($breed);
 ```
 
@@ -248,7 +248,7 @@ breeds = client.Breed.list
 puts breeds
 
 # Load a specific breed (returns the ENTITY; call data_get for the record)
-breed = client.Breed.load()
+breed = client.Breed.load({ "id" => "example_id" })
 puts breed
 ```
 
@@ -264,7 +264,7 @@ local breeds, err = client:Breed():list()
 print(breeds)
 
 -- Load a specific breed
-local breed, err = client:Breed():load()
+local breed, err = client:Breed():load({ id = "example_id" })
 print(breed)
 ```
 

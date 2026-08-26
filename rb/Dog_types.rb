@@ -10,12 +10,16 @@
 
 # Breed entity data model.
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] message
 #   @return [Array, nil]
 #
 # @!attribute [rw] status
 #   @return [String, nil]
 Breed = Struct.new(
+  :id,
   :message,
   :status,
   keyword_init: true
@@ -23,12 +27,16 @@ Breed = Struct.new(
 
 # Request payload for Breed#load.
 #
+# @!attribute [rw] id
+#   @return [String]
+#
 # @!attribute [rw] message
 #   @return [Array, nil]
 #
 # @!attribute [rw] status
 #   @return [String, nil]
 BreedLoadMatch = Struct.new(
+  :id,
   :message,
   :status,
   keyword_init: true

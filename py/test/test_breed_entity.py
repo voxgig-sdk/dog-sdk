@@ -90,9 +90,13 @@ class TestBreedEntity:
         assert isinstance(breed_ref01_list_result, list)
 
         # LOAD
-        breed_ref01_match_dt0 = {}
+        breed_ref01_match_dt0 = {
+            "id": breed_ref01_data["id"],
+        }
         breed_ref01_data_dt0_loaded = breed_ref01_ent.load(breed_ref01_match_dt0, None)
-        assert breed_ref01_data_dt0_loaded is not None
+        breed_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(breed_ref01_data_dt0_loaded))
+        assert breed_ref01_data_dt0_load_result is not None
+        assert breed_ref01_data_dt0_load_result["id"] == breed_ref01_data["id"]
 
 
 

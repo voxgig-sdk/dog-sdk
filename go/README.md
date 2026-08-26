@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single breed — the value is the loaded record.
-    breed, err := client.Breed(nil).Load(nil, nil)
+    breed, err := client.Breed(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
@@ -270,6 +270,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
+| `"id"` |  |
 | `"message"` | Array of sub-breed names |
 | `"status"` |  |
 
@@ -308,13 +309,14 @@ Create an instance: `breed := client.Breed(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `id` | `string` |  |
 | `message` | `[]any` | Array of sub-breed names |
 | `status` | `string` |  |
 
 #### Example: Load
 
 ```go
-breed, err := client.Breed(nil).Load(nil, nil)
+breed, err := client.Breed(nil).Load(map[string]any{"id": "breed_id"}, nil)
 if err != nil {
     panic(err)
 }

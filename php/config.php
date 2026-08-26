@@ -42,6 +42,7 @@ class DogConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -57,6 +58,10 @@ class DogConfig
             "entity" => [
         'breed' => [
           'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
             [
               'name' => 'message',
               'short' => 'Array of sub-breed names',

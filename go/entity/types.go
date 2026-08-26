@@ -14,12 +14,14 @@ import (
 
 // Breed is the typed data model for the breed entity.
 type Breed struct {
+	Id *string `json:"id,omitempty"`
 	Message *[]any `json:"message,omitempty"`
 	Status *string `json:"status,omitempty"`
 }
 
 // BreedLoadMatch is the typed request payload for Breed.LoadTyped.
 type BreedLoadMatch struct {
+	Id string `json:"id"`
 	Message *[]any `json:"message,omitempty"`
 	Status *string `json:"status,omitempty"`
 }

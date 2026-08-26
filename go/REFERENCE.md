@@ -102,6 +102,7 @@ fmt.Println(breed.GetName()) // "breed"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `id` | `string` | No |  |
 | `message` | `[]any` | No | Array of sub-breed names |
 | `status` | `string` | No |  |
 
@@ -124,7 +125,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Breed(nil).Load(nil, nil)
+result, err := client.Breed(nil).Load(map[string]any{"id": "breed_id"}, nil)
 if err != nil {
     panic(err)
 }

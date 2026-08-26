@@ -17,11 +17,16 @@ from typing import TypedDict, Any
 
 
 class Breed(TypedDict, total=False):
+    id: str
     message: list
     status: str
 
 
-class BreedLoadMatch(TypedDict, total=False):
+class BreedLoadMatchRequired(TypedDict):
+    id: str
+
+
+class BreedLoadMatch(BreedLoadMatchRequired, total=False):
     message: list
     status: str
 

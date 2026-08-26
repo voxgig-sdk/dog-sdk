@@ -95,9 +95,13 @@ class BreedEntityTest extends TestCase
         $this->assertIsArray($breed_ref01_list_result);
 
         // LOAD
-        $breed_ref01_match_dt0 = [];
+        $breed_ref01_match_dt0 = [
+            "id" => $breed_ref01_data["id"],
+        ];
         $breed_ref01_data_dt0_loaded = $breed_ref01_ent->load($breed_ref01_match_dt0, null);
-        $this->assertNotNull($breed_ref01_data_dt0_loaded);
+        $breed_ref01_data_dt0_load_result = Helpers::to_map(is_object($breed_ref01_data_dt0_loaded) && method_exists($breed_ref01_data_dt0_loaded, 'data_get') ? $breed_ref01_data_dt0_loaded->data_get() : $breed_ref01_data_dt0_loaded);
+        $this->assertNotNull($breed_ref01_data_dt0_load_result);
+        $this->assertEquals($breed_ref01_data_dt0_load_result["id"], $breed_ref01_data["id"]);
 
     }
 }
