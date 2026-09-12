@@ -1,6 +1,14 @@
 # Dog SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -67,6 +75,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "breed",
         "op": {
           "list": {
@@ -89,16 +101,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breed/{breed}/list",
-                "parts": [
-                  "breed",
-                  "{id}",
-                  "list",
-                ],
                 "rename": {
                   "param": {
                     "breed": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "breed",
+                  },
+                  {
+                    "var": "id",
+                  },
+                  {
+                    "lit": "list",
+                  },
+                ],
                 "select": {
                   "$action": "list",
                   "exist": [
@@ -109,6 +127,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.message`",
                 },
+                "parts": [
+                  "breed",
+                  "{id}",
+                  "list",
+                ],
               },
             ],
           },
@@ -121,16 +144,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breeds/list/all",
-                "parts": [
-                  "breeds",
-                  "list",
-                  "all",
+                "segments": [
+                  {
+                    "lit": "breeds",
+                  },
+                  {
+                    "lit": "list",
+                  },
+                  {
+                    "lit": "all",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.message`",
                 },
+                "parts": [
+                  "breeds",
+                  "list",
+                  "all",
+                ],
               },
             ],
           },
@@ -181,18 +215,26 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breed/{breed}/{subBreed}/images",
-                "parts": [
-                  "breed",
-                  "{breed_id}",
-                  "{sub_breed}",
-                  "images",
-                ],
                 "rename": {
                   "param": {
                     "breed": "breed_id",
                     "subBreed": "sub_breed",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "breed",
+                  },
+                  {
+                    "var": "breed_id",
+                  },
+                  {
+                    "var": "sub_breed",
+                  },
+                  {
+                    "lit": "images",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "breed_id",
@@ -203,6 +245,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.message`",
                 },
+                "parts": [
+                  "breed",
+                  "{breed_id}",
+                  "{sub_breed}",
+                  "images",
+                ],
               },
               {
                 "args": {
@@ -220,16 +268,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breed/{breed}/images",
-                "parts": [
-                  "breed",
-                  "{breed_id}",
-                  "images",
-                ],
                 "rename": {
                   "param": {
                     "breed": "breed_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "breed",
+                  },
+                  {
+                    "var": "breed_id",
+                  },
+                  {
+                    "lit": "images",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "breed_id",
@@ -239,6 +293,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.message`",
                 },
+                "parts": [
+                  "breed",
+                  "{breed_id}",
+                  "images",
+                ],
               },
             ],
           },
@@ -269,18 +328,28 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breed/{breed}/images/random/{count}",
-                "parts": [
-                  "breed",
-                  "{breed_id}",
-                  "images",
-                  "random",
-                  "{count}",
-                ],
                 "rename": {
                   "param": {
                     "breed": "breed_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "breed",
+                  },
+                  {
+                    "var": "breed_id",
+                  },
+                  {
+                    "lit": "images",
+                  },
+                  {
+                    "lit": "random",
+                  },
+                  {
+                    "var": "count",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "breed_id",
@@ -291,6 +360,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "breed",
+                  "{breed_id}",
+                  "images",
+                  "random",
+                  "{count}",
+                ],
               },
               {
                 "args": {
@@ -316,19 +392,29 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breed/{breed}/{subBreed}/images/random",
-                "parts": [
-                  "breed",
-                  "{breed_id}",
-                  "{sub_breed}",
-                  "images",
-                  "random",
-                ],
                 "rename": {
                   "param": {
                     "breed": "breed_id",
                     "subBreed": "sub_breed",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "breed",
+                  },
+                  {
+                    "var": "breed_id",
+                  },
+                  {
+                    "var": "sub_breed",
+                  },
+                  {
+                    "lit": "images",
+                  },
+                  {
+                    "lit": "random",
+                  },
+                ],
                 "select": {
                   "$action": "random",
                   "exist": [
@@ -340,6 +426,13 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "breed",
+                  "{breed_id}",
+                  "{sub_breed}",
+                  "images",
+                  "random",
+                ],
               },
               {
                 "args": {
@@ -357,17 +450,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breed/{breed}/images/random",
-                "parts": [
-                  "breed",
-                  "{breed_id}",
-                  "images",
-                  "random",
-                ],
                 "rename": {
                   "param": {
                     "breed": "breed_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "breed",
+                  },
+                  {
+                    "var": "breed_id",
+                  },
+                  {
+                    "lit": "images",
+                  },
+                  {
+                    "lit": "random",
+                  },
+                ],
                 "select": {
                   "$action": "random",
                   "exist": [
@@ -378,6 +479,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "breed",
+                  "{breed_id}",
+                  "images",
+                  "random",
+                ],
               },
               {
                 "args": {
@@ -394,11 +501,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breeds/image/random/{count}",
-                "parts": [
-                  "breeds",
-                  "image",
-                  "random",
-                  "{count}",
+                "segments": [
+                  {
+                    "lit": "breeds",
+                  },
+                  {
+                    "lit": "image",
+                  },
+                  {
+                    "lit": "random",
+                  },
+                  {
+                    "var": "count",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -409,16 +524,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "breeds",
+                  "image",
+                  "random",
+                  "{count}",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/breeds/image/random",
-                "parts": [
-                  "breeds",
-                  "image",
-                  "random",
+                "segments": [
+                  {
+                    "lit": "breeds",
+                  },
+                  {
+                    "lit": "image",
+                  },
+                  {
+                    "lit": "random",
+                  },
                 ],
                 "select": {
                   "$action": "random",
@@ -427,6 +554,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "breeds",
+                  "image",
+                  "random",
+                ],
               },
             ],
           },

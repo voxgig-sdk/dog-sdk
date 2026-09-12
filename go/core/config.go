@@ -50,6 +50,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "breed",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -72,14 +76,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breed/{breed}/list",
-								"parts": []any{
-									"breed",
-									"{id}",
-									"list",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"breed": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "breed",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "list",
 									},
 								},
 								"select": map[string]any{
@@ -91,6 +101,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.message`",
+								},
+								"parts": []any{
+									"breed",
+									"{id}",
+									"list",
 								},
 							},
 						},
@@ -104,15 +119,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breeds/list/all",
-								"parts": []any{
-									"breeds",
-									"list",
-									"all",
+								"segments": []any{
+									map[string]any{
+										"lit": "breeds",
+									},
+									map[string]any{
+										"lit": "list",
+									},
+									map[string]any{
+										"lit": "all",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.message`",
+								},
+								"parts": []any{
+									"breeds",
+									"list",
+									"all",
 								},
 							},
 						},
@@ -164,16 +190,24 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breed/{breed}/{subBreed}/images",
-								"parts": []any{
-									"breed",
-									"{breed_id}",
-									"{sub_breed}",
-									"images",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"breed": "breed_id",
 										"subBreed": "sub_breed",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "breed",
+									},
+									map[string]any{
+										"var": "breed_id",
+									},
+									map[string]any{
+										"var": "sub_breed",
+									},
+									map[string]any{
+										"lit": "images",
 									},
 								},
 								"select": map[string]any{
@@ -185,6 +219,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.message`",
+								},
+								"parts": []any{
+									"breed",
+									"{breed_id}",
+									"{sub_breed}",
+									"images",
 								},
 							},
 							map[string]any{
@@ -203,14 +243,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breed/{breed}/images",
-								"parts": []any{
-									"breed",
-									"{breed_id}",
-									"images",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"breed": "breed_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "breed",
+									},
+									map[string]any{
+										"var": "breed_id",
+									},
+									map[string]any{
+										"lit": "images",
 									},
 								},
 								"select": map[string]any{
@@ -221,6 +267,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.message`",
+								},
+								"parts": []any{
+									"breed",
+									"{breed_id}",
+									"images",
 								},
 							},
 						},
@@ -252,16 +303,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breed/{breed}/images/random/{count}",
-								"parts": []any{
-									"breed",
-									"{breed_id}",
-									"images",
-									"random",
-									"{count}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"breed": "breed_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "breed",
+									},
+									map[string]any{
+										"var": "breed_id",
+									},
+									map[string]any{
+										"lit": "images",
+									},
+									map[string]any{
+										"lit": "random",
+									},
+									map[string]any{
+										"var": "count",
 									},
 								},
 								"select": map[string]any{
@@ -273,6 +334,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"breed",
+									"{breed_id}",
+									"images",
+									"random",
+									"{count}",
 								},
 							},
 							map[string]any{
@@ -299,17 +367,27 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breed/{breed}/{subBreed}/images/random",
-								"parts": []any{
-									"breed",
-									"{breed_id}",
-									"{sub_breed}",
-									"images",
-									"random",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"breed": "breed_id",
 										"subBreed": "sub_breed",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "breed",
+									},
+									map[string]any{
+										"var": "breed_id",
+									},
+									map[string]any{
+										"var": "sub_breed",
+									},
+									map[string]any{
+										"lit": "images",
+									},
+									map[string]any{
+										"lit": "random",
 									},
 								},
 								"select": map[string]any{
@@ -322,6 +400,13 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"breed",
+									"{breed_id}",
+									"{sub_breed}",
+									"images",
+									"random",
 								},
 							},
 							map[string]any{
@@ -340,15 +425,23 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breed/{breed}/images/random",
-								"parts": []any{
-									"breed",
-									"{breed_id}",
-									"images",
-									"random",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"breed": "breed_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "breed",
+									},
+									map[string]any{
+										"var": "breed_id",
+									},
+									map[string]any{
+										"lit": "images",
+									},
+									map[string]any{
+										"lit": "random",
 									},
 								},
 								"select": map[string]any{
@@ -360,6 +453,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"breed",
+									"{breed_id}",
+									"images",
+									"random",
 								},
 							},
 							map[string]any{
@@ -377,11 +476,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breeds/image/random/{count}",
-								"parts": []any{
-									"breeds",
-									"image",
-									"random",
-									"{count}",
+								"segments": []any{
+									map[string]any{
+										"lit": "breeds",
+									},
+									map[string]any{
+										"lit": "image",
+									},
+									map[string]any{
+										"lit": "random",
+									},
+									map[string]any{
+										"var": "count",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -392,16 +499,28 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"breeds",
+									"image",
+									"random",
+									"{count}",
+								},
 							},
 							map[string]any{
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/breeds/image/random",
-								"parts": []any{
-									"breeds",
-									"image",
-									"random",
+								"segments": []any{
+									map[string]any{
+										"lit": "breeds",
+									},
+									map[string]any{
+										"lit": "image",
+									},
+									map[string]any{
+										"lit": "random",
+									},
 								},
 								"select": map[string]any{
 									"$action": "random",
@@ -409,6 +528,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"breeds",
+									"image",
+									"random",
 								},
 							},
 						},
@@ -428,6 +552,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

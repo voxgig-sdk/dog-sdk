@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -83,6 +94,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "breed",
       "op": {
         "list": {
@@ -105,16 +120,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/list",
-              "parts": [
-                "breed",
-                "{id}",
-                "list"
-              ],
               "rename": {
                 "param": {
                   "breed": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "breed"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "list"
+                }
+              ],
               "select": {
                 "$action": "list",
                 "exist": [
@@ -124,7 +145,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.message`"
-              }
+              },
+              "parts": [
+                "breed",
+                "{id}",
+                "list"
+              ]
             }
           ]
         },
@@ -137,16 +163,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breeds/list/all",
-              "parts": [
-                "breeds",
-                "list",
-                "all"
+              "segments": [
+                {
+                  "lit": "breeds"
+                },
+                {
+                  "lit": "list"
+                },
+                {
+                  "lit": "all"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.message`"
-              }
+              },
+              "parts": [
+                "breeds",
+                "list",
+                "all"
+              ]
             }
           ]
         }
@@ -197,18 +234,26 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/{subBreed}/images",
-              "parts": [
-                "breed",
-                "{breed_id}",
-                "{sub_breed}",
-                "images"
-              ],
               "rename": {
                 "param": {
                   "breed": "breed_id",
                   "subBreed": "sub_breed"
                 }
               },
+              "segments": [
+                {
+                  "lit": "breed"
+                },
+                {
+                  "var": "breed_id"
+                },
+                {
+                  "var": "sub_breed"
+                },
+                {
+                  "lit": "images"
+                }
+              ],
               "select": {
                 "exist": [
                   "breed_id",
@@ -218,7 +263,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.message`"
-              }
+              },
+              "parts": [
+                "breed",
+                "{breed_id}",
+                "{sub_breed}",
+                "images"
+              ]
             },
             {
               "args": {
@@ -236,16 +287,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/images",
-              "parts": [
-                "breed",
-                "{breed_id}",
-                "images"
-              ],
               "rename": {
                 "param": {
                   "breed": "breed_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "breed"
+                },
+                {
+                  "var": "breed_id"
+                },
+                {
+                  "lit": "images"
+                }
+              ],
               "select": {
                 "exist": [
                   "breed_id"
@@ -254,7 +311,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.message`"
-              }
+              },
+              "parts": [
+                "breed",
+                "{breed_id}",
+                "images"
+              ]
             }
           ]
         },
@@ -285,18 +347,28 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/images/random/{count}",
-              "parts": [
-                "breed",
-                "{breed_id}",
-                "images",
-                "random",
-                "{count}"
-              ],
               "rename": {
                 "param": {
                   "breed": "breed_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "breed"
+                },
+                {
+                  "var": "breed_id"
+                },
+                {
+                  "lit": "images"
+                },
+                {
+                  "lit": "random"
+                },
+                {
+                  "var": "count"
+                }
+              ],
               "select": {
                 "exist": [
                   "breed_id",
@@ -306,7 +378,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "breed",
+                "{breed_id}",
+                "images",
+                "random",
+                "{count}"
+              ]
             },
             {
               "args": {
@@ -332,19 +411,29 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/{subBreed}/images/random",
-              "parts": [
-                "breed",
-                "{breed_id}",
-                "{sub_breed}",
-                "images",
-                "random"
-              ],
               "rename": {
                 "param": {
                   "breed": "breed_id",
                   "subBreed": "sub_breed"
                 }
               },
+              "segments": [
+                {
+                  "lit": "breed"
+                },
+                {
+                  "var": "breed_id"
+                },
+                {
+                  "var": "sub_breed"
+                },
+                {
+                  "lit": "images"
+                },
+                {
+                  "lit": "random"
+                }
+              ],
               "select": {
                 "$action": "random",
                 "exist": [
@@ -355,7 +444,14 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "breed",
+                "{breed_id}",
+                "{sub_breed}",
+                "images",
+                "random"
+              ]
             },
             {
               "args": {
@@ -373,17 +469,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breed/{breed}/images/random",
-              "parts": [
-                "breed",
-                "{breed_id}",
-                "images",
-                "random"
-              ],
               "rename": {
                 "param": {
                   "breed": "breed_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "breed"
+                },
+                {
+                  "var": "breed_id"
+                },
+                {
+                  "lit": "images"
+                },
+                {
+                  "lit": "random"
+                }
+              ],
               "select": {
                 "$action": "random",
                 "exist": [
@@ -393,7 +497,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "breed",
+                "{breed_id}",
+                "images",
+                "random"
+              ]
             },
             {
               "args": {
@@ -410,11 +520,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/breeds/image/random/{count}",
-              "parts": [
-                "breeds",
-                "image",
-                "random",
-                "{count}"
+              "segments": [
+                {
+                  "lit": "breeds"
+                },
+                {
+                  "lit": "image"
+                },
+                {
+                  "lit": "random"
+                },
+                {
+                  "var": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -424,17 +542,29 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "breeds",
+                "image",
+                "random",
+                "{count}"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/breeds/image/random",
-              "parts": [
-                "breeds",
-                "image",
-                "random"
+              "segments": [
+                {
+                  "lit": "breeds"
+                },
+                {
+                  "lit": "image"
+                },
+                {
+                  "lit": "random"
+                }
               ],
               "select": {
                 "$action": "random"
@@ -442,7 +572,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "breeds",
+                "image",
+                "random"
+              ]
             }
           ]
         }
@@ -466,6 +601,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

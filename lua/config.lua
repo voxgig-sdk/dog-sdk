@@ -46,6 +46,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "breed",
         ["op"] = {
           ["list"] = {
@@ -68,14 +72,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/list",
-                ["parts"] = {
-                  "breed",
-                  "{id}",
-                  "list",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["breed"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "breed",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "list",
                   },
                 },
                 ["select"] = {
@@ -87,6 +97,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.message`",
+                },
+                ["parts"] = {
+                  "breed",
+                  "{id}",
+                  "list",
                 },
               },
             },
@@ -100,15 +115,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breeds/list/all",
-                ["parts"] = {
-                  "breeds",
-                  "list",
-                  "all",
+                ["segments"] = {
+                  {
+                    ["lit"] = "breeds",
+                  },
+                  {
+                    ["lit"] = "list",
+                  },
+                  {
+                    ["lit"] = "all",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.message`",
+                },
+                ["parts"] = {
+                  "breeds",
+                  "list",
+                  "all",
                 },
               },
             },
@@ -160,16 +186,24 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/{subBreed}/images",
-                ["parts"] = {
-                  "breed",
-                  "{breed_id}",
-                  "{sub_breed}",
-                  "images",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["breed"] = "breed_id",
                     ["subBreed"] = "sub_breed",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "breed",
+                  },
+                  {
+                    ["var"] = "breed_id",
+                  },
+                  {
+                    ["var"] = "sub_breed",
+                  },
+                  {
+                    ["lit"] = "images",
                   },
                 },
                 ["select"] = {
@@ -181,6 +215,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.message`",
+                },
+                ["parts"] = {
+                  "breed",
+                  "{breed_id}",
+                  "{sub_breed}",
+                  "images",
                 },
               },
               {
@@ -199,14 +239,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/images",
-                ["parts"] = {
-                  "breed",
-                  "{breed_id}",
-                  "images",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["breed"] = "breed_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "breed",
+                  },
+                  {
+                    ["var"] = "breed_id",
+                  },
+                  {
+                    ["lit"] = "images",
                   },
                 },
                 ["select"] = {
@@ -217,6 +263,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.message`",
+                },
+                ["parts"] = {
+                  "breed",
+                  "{breed_id}",
+                  "images",
                 },
               },
             },
@@ -248,16 +299,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/images/random/{count}",
-                ["parts"] = {
-                  "breed",
-                  "{breed_id}",
-                  "images",
-                  "random",
-                  "{count}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["breed"] = "breed_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "breed",
+                  },
+                  {
+                    ["var"] = "breed_id",
+                  },
+                  {
+                    ["lit"] = "images",
+                  },
+                  {
+                    ["lit"] = "random",
+                  },
+                  {
+                    ["var"] = "count",
                   },
                 },
                 ["select"] = {
@@ -269,6 +330,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "breed",
+                  "{breed_id}",
+                  "images",
+                  "random",
+                  "{count}",
                 },
               },
               {
@@ -295,17 +363,27 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/{subBreed}/images/random",
-                ["parts"] = {
-                  "breed",
-                  "{breed_id}",
-                  "{sub_breed}",
-                  "images",
-                  "random",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["breed"] = "breed_id",
                     ["subBreed"] = "sub_breed",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "breed",
+                  },
+                  {
+                    ["var"] = "breed_id",
+                  },
+                  {
+                    ["var"] = "sub_breed",
+                  },
+                  {
+                    ["lit"] = "images",
+                  },
+                  {
+                    ["lit"] = "random",
                   },
                 },
                 ["select"] = {
@@ -318,6 +396,13 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "breed",
+                  "{breed_id}",
+                  "{sub_breed}",
+                  "images",
+                  "random",
                 },
               },
               {
@@ -336,15 +421,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breed/{breed}/images/random",
-                ["parts"] = {
-                  "breed",
-                  "{breed_id}",
-                  "images",
-                  "random",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["breed"] = "breed_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "breed",
+                  },
+                  {
+                    ["var"] = "breed_id",
+                  },
+                  {
+                    ["lit"] = "images",
+                  },
+                  {
+                    ["lit"] = "random",
                   },
                 },
                 ["select"] = {
@@ -356,6 +449,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "breed",
+                  "{breed_id}",
+                  "images",
+                  "random",
                 },
               },
               {
@@ -373,11 +472,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breeds/image/random/{count}",
-                ["parts"] = {
-                  "breeds",
-                  "image",
-                  "random",
-                  "{count}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "breeds",
+                  },
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "random",
+                  },
+                  {
+                    ["var"] = "count",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -388,16 +495,28 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "breeds",
+                  "image",
+                  "random",
+                  "{count}",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/breeds/image/random",
-                ["parts"] = {
-                  "breeds",
-                  "image",
-                  "random",
+                ["segments"] = {
+                  {
+                    ["lit"] = "breeds",
+                  },
+                  {
+                    ["lit"] = "image",
+                  },
+                  {
+                    ["lit"] = "random",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "random",
@@ -405,6 +524,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "breeds",
+                  "image",
+                  "random",
                 },
               },
             },

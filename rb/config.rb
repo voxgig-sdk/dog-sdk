@@ -58,6 +58,10 @@ module DogConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "breed",
           "op" => {
             "list" => {
@@ -80,16 +84,22 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/list",
-                  "parts" => [
-                    "breed",
-                    "{id}",
-                    "list",
-                  ],
                   "rename" => {
                     "param" => {
                       "breed" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "breed",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "list",
+                    },
+                  ],
                   "select" => {
                     "$action" => "list",
                     "exist" => [
@@ -100,6 +110,11 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body.message`",
                   },
+                  "parts" => [
+                    "breed",
+                    "{id}",
+                    "list",
+                  ],
                 },
               ],
             },
@@ -112,16 +127,27 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breeds/list/all",
-                  "parts" => [
-                    "breeds",
-                    "list",
-                    "all",
+                  "segments" => [
+                    {
+                      "lit" => "breeds",
+                    },
+                    {
+                      "lit" => "list",
+                    },
+                    {
+                      "lit" => "all",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.message`",
                   },
+                  "parts" => [
+                    "breeds",
+                    "list",
+                    "all",
+                  ],
                 },
               ],
             },
@@ -172,18 +198,26 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/{subBreed}/images",
-                  "parts" => [
-                    "breed",
-                    "{breed_id}",
-                    "{sub_breed}",
-                    "images",
-                  ],
                   "rename" => {
                     "param" => {
                       "breed" => "breed_id",
                       "subBreed" => "sub_breed",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "breed",
+                    },
+                    {
+                      "var" => "breed_id",
+                    },
+                    {
+                      "var" => "sub_breed",
+                    },
+                    {
+                      "lit" => "images",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "breed_id",
@@ -194,6 +228,12 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body.message`",
                   },
+                  "parts" => [
+                    "breed",
+                    "{breed_id}",
+                    "{sub_breed}",
+                    "images",
+                  ],
                 },
                 {
                   "args" => {
@@ -211,16 +251,22 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/images",
-                  "parts" => [
-                    "breed",
-                    "{breed_id}",
-                    "images",
-                  ],
                   "rename" => {
                     "param" => {
                       "breed" => "breed_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "breed",
+                    },
+                    {
+                      "var" => "breed_id",
+                    },
+                    {
+                      "lit" => "images",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "breed_id",
@@ -230,6 +276,11 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body.message`",
                   },
+                  "parts" => [
+                    "breed",
+                    "{breed_id}",
+                    "images",
+                  ],
                 },
               ],
             },
@@ -260,18 +311,28 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/images/random/{count}",
-                  "parts" => [
-                    "breed",
-                    "{breed_id}",
-                    "images",
-                    "random",
-                    "{count}",
-                  ],
                   "rename" => {
                     "param" => {
                       "breed" => "breed_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "breed",
+                    },
+                    {
+                      "var" => "breed_id",
+                    },
+                    {
+                      "lit" => "images",
+                    },
+                    {
+                      "lit" => "random",
+                    },
+                    {
+                      "var" => "count",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "breed_id",
@@ -282,6 +343,13 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "breed",
+                    "{breed_id}",
+                    "images",
+                    "random",
+                    "{count}",
+                  ],
                 },
                 {
                   "args" => {
@@ -307,19 +375,29 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/{subBreed}/images/random",
-                  "parts" => [
-                    "breed",
-                    "{breed_id}",
-                    "{sub_breed}",
-                    "images",
-                    "random",
-                  ],
                   "rename" => {
                     "param" => {
                       "breed" => "breed_id",
                       "subBreed" => "sub_breed",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "breed",
+                    },
+                    {
+                      "var" => "breed_id",
+                    },
+                    {
+                      "var" => "sub_breed",
+                    },
+                    {
+                      "lit" => "images",
+                    },
+                    {
+                      "lit" => "random",
+                    },
+                  ],
                   "select" => {
                     "$action" => "random",
                     "exist" => [
@@ -331,6 +409,13 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "breed",
+                    "{breed_id}",
+                    "{sub_breed}",
+                    "images",
+                    "random",
+                  ],
                 },
                 {
                   "args" => {
@@ -348,17 +433,25 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breed/{breed}/images/random",
-                  "parts" => [
-                    "breed",
-                    "{breed_id}",
-                    "images",
-                    "random",
-                  ],
                   "rename" => {
                     "param" => {
                       "breed" => "breed_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "breed",
+                    },
+                    {
+                      "var" => "breed_id",
+                    },
+                    {
+                      "lit" => "images",
+                    },
+                    {
+                      "lit" => "random",
+                    },
+                  ],
                   "select" => {
                     "$action" => "random",
                     "exist" => [
@@ -369,6 +462,12 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "breed",
+                    "{breed_id}",
+                    "images",
+                    "random",
+                  ],
                 },
                 {
                   "args" => {
@@ -385,11 +484,19 @@ module DogConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breeds/image/random/{count}",
-                  "parts" => [
-                    "breeds",
-                    "image",
-                    "random",
-                    "{count}",
+                  "segments" => [
+                    {
+                      "lit" => "breeds",
+                    },
+                    {
+                      "lit" => "image",
+                    },
+                    {
+                      "lit" => "random",
+                    },
+                    {
+                      "var" => "count",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -400,16 +507,28 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "breeds",
+                    "image",
+                    "random",
+                    "{count}",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/breeds/image/random",
-                  "parts" => [
-                    "breeds",
-                    "image",
-                    "random",
+                  "segments" => [
+                    {
+                      "lit" => "breeds",
+                    },
+                    {
+                      "lit" => "image",
+                    },
+                    {
+                      "lit" => "random",
+                    },
                   ],
                   "select" => {
                     "$action" => "random",
@@ -418,6 +537,11 @@ module DogConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "breeds",
+                    "image",
+                    "random",
+                  ],
                 },
               ],
             },

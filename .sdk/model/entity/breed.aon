@@ -48,16 +48,22 @@ main: kit: entity: breed: {
           }
           method: "GET"
           orig: "/breed/{breed}/list"
-          parts: [
-            "breed"
-            "{id}"
-            "list"
-          ]
           rename: {
             param: {
               breed: "id"
             }
           }
+          segments: [
+            {
+              lit: "breed"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "list"
+            }
+          ]
           select: {
             "$action": "list"
             exist: [
@@ -77,10 +83,16 @@ main: kit: entity: breed: {
         {
           method: "GET"
           orig: "/breeds/list/all"
-          parts: [
-            "breeds"
-            "list"
-            "all"
+          segments: [
+            {
+              lit: "breeds"
+            }
+            {
+              lit: "list"
+            }
+            {
+              lit: "all"
+            }
           ]
           transform: {
             req: "`reqdata`"

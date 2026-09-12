@@ -80,16 +80,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breed/{breed}/list",
-                  "parts": [
-                    "breed",
-                    "{id}",
-                    "list"
-                  ],
                   "rename": {
                     "param": {
                       "breed": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "breed"
+                    },
+                    {
+                      "var": "id"
+                    },
+                    {
+                      "lit": "list"
+                    }
+                  ],
                   "select": {
                     "$action": "list",
                     "exist": [
@@ -113,10 +119,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breeds/list/all",
-                  "parts": [
-                    "breeds",
-                    "list",
-                    "all"
+                  "segments": [
+                    {
+                      "lit": "breeds"
+                    },
+                    {
+                      "lit": "list"
+                    },
+                    {
+                      "lit": "all"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -184,18 +196,26 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breed/{breed}/{subBreed}/images",
-                  "parts": [
-                    "breed",
-                    "{breed_id}",
-                    "{sub_breed}",
-                    "images"
-                  ],
                   "rename": {
                     "param": {
                       "breed": "breed_id",
                       "subBreed": "sub_breed"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "breed"
+                    },
+                    {
+                      "var": "breed_id"
+                    },
+                    {
+                      "var": "sub_breed"
+                    },
+                    {
+                      "lit": "images"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "breed_id",
@@ -225,16 +245,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breed/{breed}/images",
-                  "parts": [
-                    "breed",
-                    "{breed_id}",
-                    "images"
-                  ],
                   "rename": {
                     "param": {
                       "breed": "breed_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "breed"
+                    },
+                    {
+                      "var": "breed_id"
+                    },
+                    {
+                      "lit": "images"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "breed_id"
@@ -277,18 +303,28 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breed/{breed}/images/random/{count}",
-                  "parts": [
-                    "breed",
-                    "{breed_id}",
-                    "images",
-                    "random",
-                    "{count}"
-                  ],
                   "rename": {
                     "param": {
                       "breed": "breed_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "breed"
+                    },
+                    {
+                      "var": "breed_id"
+                    },
+                    {
+                      "lit": "images"
+                    },
+                    {
+                      "lit": "random"
+                    },
+                    {
+                      "var": "count"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "breed_id",
@@ -327,19 +363,29 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breed/{breed}/{subBreed}/images/random",
-                  "parts": [
-                    "breed",
-                    "{breed_id}",
-                    "{sub_breed}",
-                    "images",
-                    "random"
-                  ],
                   "rename": {
                     "param": {
                       "breed": "breed_id",
                       "subBreed": "sub_breed"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "breed"
+                    },
+                    {
+                      "var": "breed_id"
+                    },
+                    {
+                      "var": "sub_breed"
+                    },
+                    {
+                      "lit": "images"
+                    },
+                    {
+                      "lit": "random"
+                    }
+                  ],
                   "select": {
                     "$action": "random",
                     "exist": [
@@ -370,17 +416,25 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breed/{breed}/images/random",
-                  "parts": [
-                    "breed",
-                    "{breed_id}",
-                    "images",
-                    "random"
-                  ],
                   "rename": {
                     "param": {
                       "breed": "breed_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "breed"
+                    },
+                    {
+                      "var": "breed_id"
+                    },
+                    {
+                      "lit": "images"
+                    },
+                    {
+                      "lit": "random"
+                    }
+                  ],
                   "select": {
                     "$action": "random",
                     "exist": [
@@ -409,11 +463,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breeds/image/random/{count}",
-                  "parts": [
-                    "breeds",
-                    "image",
-                    "random",
-                    "{count}"
+                  "segments": [
+                    {
+                      "lit": "breeds"
+                    },
+                    {
+                      "lit": "image"
+                    },
+                    {
+                      "lit": "random"
+                    },
+                    {
+                      "var": "count"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -431,10 +493,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/breeds/image/random",
-                  "parts": [
-                    "breeds",
-                    "image",
-                    "random"
+                  "segments": [
+                    {
+                      "lit": "breeds"
+                    },
+                    {
+                      "lit": "image"
+                    },
+                    {
+                      "lit": "random"
+                    }
                   ],
                   "select": {
                     "$action": "random"
@@ -524,8 +592,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -713,6 +784,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -738,6 +812,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -789,6 +867,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -813,6 +892,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -864,6 +944,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -888,6 +969,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -928,6 +1010,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -953,6 +1038,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -987,6 +1075,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1012,6 +1103,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1052,6 +1146,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1077,6 +1174,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1122,6 +1222,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1147,6 +1250,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1164,11 +1270,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1197,6 +1298,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1221,6 +1325,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },
