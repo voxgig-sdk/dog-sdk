@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { DogSDK } from '@voxgig-sdk/dog'
+import { DogSDK } from '@voxgig-sdk/dog-sdk'
 
 const client = new DogSDK()
 ```
@@ -475,7 +475,7 @@ dog/
 Import the SDK from the package root:
 
 ```ts
-import { DogSDK } from '@voxgig-sdk/dog'
+import { DogSDK } from '@voxgig-sdk/dog-sdk'
 ```
 
 ### Entity state

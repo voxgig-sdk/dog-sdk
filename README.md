@@ -105,7 +105,7 @@ local results, err = client:Breed():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
+| TypeScript | `@voxgig-sdk/dog-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
 | Python | `voxgig-sdk-dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
 | PHP | `voxgig-sdk/dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/dog-sdk/go` | `go get github.com/voxgig-sdk/dog-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Breed():list()
 ### TypeScript
 
 ```ts
-import { DogSDK } from '@voxgig-sdk/dog'
+import { DogSDK } from '@voxgig-sdk/dog-sdk'
 
 const client = new DogSDK()
 
