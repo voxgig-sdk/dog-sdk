@@ -34,5 +34,435 @@
         "status": "s51"
       }
     }
+  },
+  "requests": {
+    "GET /breed/{breed}/{subBreed}/images": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSubBreedImages",
+        "parameters": [
+          {
+            "description": "The breed name",
+            "example": "hound",
+            "in": "path",
+            "name": "breed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sub-breed name",
+            "example": "afghan",
+            "in": "path",
+            "name": "subBreed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "Array of image URLs for the sub-breed",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "Breed not found",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Breed or sub-breed not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /breed/{breed}/images": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBreedImages",
+        "parameters": [
+          {
+            "description": "The breed name",
+            "example": "hound",
+            "in": "path",
+            "name": "breed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "Array of image URLs for the breed",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "Breed not found",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Breed not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /breed/{breed}/images/random/{count}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMultipleRandomBreedImages",
+        "parameters": [
+          {
+            "description": "The breed name",
+            "example": "hound",
+            "in": "path",
+            "name": "breed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Number of random images to return",
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "schema": {
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "Array of random image URLs for the breed",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "Breed not found",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Breed not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /breed/{breed}/{subBreed}/images/random": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomSubBreedImage",
+        "parameters": [
+          {
+            "description": "The breed name",
+            "example": "hound",
+            "in": "path",
+            "name": "breed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The sub-breed name",
+            "example": "afghan",
+            "in": "path",
+            "name": "subBreed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "URL of random image for the sub-breed",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "Breed not found",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Breed or sub-breed not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /breed/{breed}/images/random": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomBreedImage",
+        "parameters": [
+          {
+            "description": "The breed name",
+            "example": "hound",
+            "in": "path",
+            "name": "breed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "URL of random image for the breed",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "example": "Breed not found",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "error",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Breed not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /breeds/image/random/{count}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMultipleRandomDogImages",
+        "parameters": [
+          {
+            "description": "Number of random images to return (max 50)",
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "schema": {
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "Array of URLs of random dog images",
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /breeds/image/random": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomDogImage",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "description": "URL of the random dog image",
+                      "example": "https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg",
+                      "type": "string"
+                    },
+                    "status": {
+                      "example": "success",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -44,6 +44,12 @@ main: kit: entity: image: {
               }
             ]
           }
+          contract: {
+            id: "GET /breed/{breed}/{subBreed}/images"
+            json: "{\"operationId\":\"getSubBreedImages\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"The sub-breed name\",\"example\":\"afghan\",\"in\":\"path\",\"name\":\"subBreed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of image URLs for the sub-breed\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed or sub-breed not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/breed/{breed}/{subBreed}/images"
           rename: {
@@ -89,6 +95,12 @@ main: kit: entity: image: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /breed/{breed}/images"
+            json: "{\"operationId\":\"getBreedImages\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of image URLs for the breed\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/breed/{breed}/images"
@@ -142,6 +154,12 @@ main: kit: entity: image: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /breed/{breed}/images/random/{count}"
+            json: "{\"operationId\":\"getMultipleRandomBreedImages\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of random images to return\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of random image URLs for the breed\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/breed/{breed}/images/random/{count}"
@@ -199,6 +217,12 @@ main: kit: entity: image: {
               }
             ]
           }
+          contract: {
+            id: "GET /breed/{breed}/{subBreed}/images/random"
+            json: "{\"operationId\":\"getRandomSubBreedImage\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"The sub-breed name\",\"example\":\"afghan\",\"in\":\"path\",\"name\":\"subBreed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"URL of random image for the sub-breed\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed or sub-breed not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/breed/{breed}/{subBreed}/images/random"
           rename: {
@@ -249,6 +273,12 @@ main: kit: entity: image: {
               }
             ]
           }
+          contract: {
+            id: "GET /breed/{breed}/images/random"
+            json: "{\"operationId\":\"getRandomBreedImage\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"URL of random image for the breed\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/breed/{breed}/images/random"
           rename: {
@@ -293,6 +323,12 @@ main: kit: entity: image: {
               }
             ]
           }
+          contract: {
+            id: "GET /breeds/image/random/{count}"
+            json: "{\"operationId\":\"getMultipleRandomDogImages\",\"parameters\":[{\"description\":\"Number of random images to return (max 50)\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of URLs of random dog images\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/breeds/image/random/{count}"
           segments: [
@@ -320,6 +356,12 @@ main: kit: entity: image: {
           }
         }
         {
+          contract: {
+            id: "GET /breeds/image/random"
+            json: "{\"operationId\":\"getRandomDogImage\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"URL of the random dog image\",\"example\":\"https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/breeds/image/random"
           segments: [

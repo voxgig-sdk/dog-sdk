@@ -1,12 +1,18 @@
 # Dog SDK feature factory
 
 from dog_sdk.feature.base_feature import DogBaseFeature
+from dog_sdk.feature.ratelimit_feature import DogRatelimitFeature
+from dog_sdk.feature.retry_feature import DogRetryFeature
 from dog_sdk.feature.test_feature import DogTestFeature
+from dog_sdk.feature.timeout_feature import DogTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: DogBaseFeature(),
+    "ratelimit": lambda: DogRatelimitFeature(),
+    "retry": lambda: DogRetryFeature(),
     "test": lambda: DogTestFeature(),
+    "timeout": lambda: DogTimeoutFeature(),
 }
 
 
