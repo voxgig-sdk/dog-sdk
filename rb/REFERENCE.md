@@ -98,8 +98,6 @@ breed = client.Breed
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `String` | No |  |
-| `message` | `Array` | No | Array of sub-breed names |
-| `status` | `String` | No |  |
 
 ### Operations
 

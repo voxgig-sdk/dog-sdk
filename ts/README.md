@@ -312,8 +312,6 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `message` | Array of sub-breed names |
-| `status` |  |
 
 Operations: list, load.
 
@@ -351,8 +349,6 @@ Create an instance: `const breed = client.Breed()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `message` | `any[]` | Array of sub-breed names |
-| `status` | `string` |  |
 
 #### Example: Load
 

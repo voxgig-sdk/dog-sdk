@@ -259,8 +259,6 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `message` | Array of sub-breed names |
-| `status` |  |
 
 Operations: List, Load.
 
@@ -298,8 +296,6 @@ Create an instance: `breed = client.Breed()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `str` |  |
-| `message` | `list` | Array of sub-breed names |
-| `status` | `str` |  |
 
 #### Example: Load
 
@@ -487,6 +483,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── dog_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations

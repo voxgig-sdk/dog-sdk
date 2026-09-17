@@ -16,16 +16,12 @@ declare(strict_types=1);
 class Breed
 {
     public ?string $id = null;
-    public ?array $message = null;
-    public ?string $status = null;
 }
 
 /** Request payload for Breed#load. */
 class BreedLoadMatch
 {
     public string $id;
-    public ?array $message = null;
-    public ?string $status = null;
 }
 
 /** Request payload for Breed#list. */

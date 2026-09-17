@@ -105,12 +105,12 @@ local results, err = client:Breed():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/dog-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
-| Python | `voxgig-sdk-dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
-| PHP | `voxgig-sdk/dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
+| TypeScript | `@voxgig-sdk/dog-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/tags) |
+| Python | `voxgig-sdk-dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/tags) |
+| PHP | `voxgig-sdk/dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/dog-sdk/go` | `go get github.com/voxgig-sdk/dog-sdk/go@latest` |
-| Ruby | `voxgig-sdk-dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
-| Lua | `voxgig-sdk-dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/releases) |
+| Ruby | `voxgig-sdk-dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/tags) |
+| Lua | `voxgig-sdk-dog` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dog-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/dog-sdk/go-cli` | `go install github.com/voxgig-sdk/dog-sdk/go-cli/cmd/dog@latest` |
 | Go MCP server | `github.com/voxgig-sdk/dog-sdk/go-mcp` | `go get github.com/voxgig-sdk/dog-sdk/go-mcp@latest` |
 

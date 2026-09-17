@@ -92,8 +92,6 @@ breed = client.Breed()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `str` | No |  |
-| `message` | `list` | No | Array of sub-breed names |
-| `status` | `str` | No |  |
 
 ### Operations
 

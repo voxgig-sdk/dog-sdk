@@ -75,15 +75,10 @@ declare class Config {
     };
     entity: {
         breed: {
-            fields: ({
+            fields: {
                 name: string;
                 type: string;
-                short?: undefined;
-            } | {
-                name: string;
-                short: string;
-                type: string;
-            })[];
+            }[];
             id: {
                 field: string;
                 name: string;

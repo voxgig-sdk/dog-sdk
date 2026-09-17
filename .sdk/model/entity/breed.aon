@@ -10,17 +10,6 @@ main: kit: entity: breed: {
       req: false
       type: "`$STRING`"
     }
-    {
-      name: "message"
-      req: false
-      short: "Array of sub-breed names"
-      type: "`$ARRAY`"
-    }
-    {
-      name: "status"
-      req: false
-      type: "`$STRING`"
-    }
   ]
 
   id: {

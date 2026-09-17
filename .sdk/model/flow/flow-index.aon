@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicBreedFlow.aon"
-@"BasicImageFlow.aon"
+@"./BasicBreedFlow.aon"
+@"./BasicImageFlow.aon"

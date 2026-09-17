@@ -8,13 +8,9 @@
 
 ---@class Breed
 ---@field id? string
----@field message? table
----@field status? string
 
 ---@class BreedLoadMatch
 ---@field id string
----@field message? table
----@field status? string
 
 ---@class BreedListMatch
 ---@field id string

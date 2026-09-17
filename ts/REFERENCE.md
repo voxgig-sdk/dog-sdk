@@ -129,8 +129,6 @@ const breed = client.Breed()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
-| `message` | `any[]` | No | Array of sub-breed names |
-| `status` | `string` | No |  |
 
 ### Actions
 

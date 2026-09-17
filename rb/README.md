@@ -37,7 +37,7 @@ begin
   # list returns an Array of Breed records — iterate directly.
   breeds = client.Breed.list
   breeds.each do |item|
-    puts "#{item["id"]} #{item["message"]}"
+    puts "#{item["id"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -257,8 +257,6 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `message` | Array of sub-breed names |
-| `status` |  |
 
 Operations: List, Load.
 
@@ -296,8 +294,6 @@ Create an instance: `breed = client.Breed`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `String` |  |
-| `message` | `Array` | Array of sub-breed names |
-| `status` | `String` |  |
 
 #### Example: Load
 
@@ -489,6 +485,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── Dog_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

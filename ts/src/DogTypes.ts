@@ -7,14 +7,10 @@
 
 export interface Breed {
   id?: string
-  message?: any[]
-  status?: string
 }
 
 export interface BreedLoadMatch {
   id: string
-  message?: any[]
-  status?: string
 }
 
 export interface BreedListMatch {

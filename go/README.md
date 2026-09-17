@@ -271,8 +271,6 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"id"` |  |
-| `"message"` | Array of sub-breed names |
-| `"status"` |  |
 
 Operations: List, Load.
 
@@ -310,8 +308,6 @@ Create an instance: `breed := client.Breed(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `message` | `[]any` | Array of sub-breed names |
-| `status` | `string` |  |
 
 #### Example: Load
 

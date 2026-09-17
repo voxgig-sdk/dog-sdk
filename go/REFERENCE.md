@@ -103,8 +103,6 @@ fmt.Println(breed.GetName()) // "breed"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
-| `message` | `[]any` | No | Array of sub-breed names |
-| `status` | `string` | No |  |
 
 ### Operations
 

@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      breed: {
-      },
-
-      image: {
-      },
-
+        breed: {
+        },
+  
+        image: {
+        },
+  
     }
   }
 
@@ -142,15 +142,6 @@ class Config {
       "fields": [
         {
           "name": "id",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "message",
-          "short": "Array of sub-breed names",
-          "type": "`$ARRAY`"
-        },
-        {
-          "name": "status",
           "type": "`$STRING`"
         }
       ],

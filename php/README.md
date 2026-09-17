@@ -39,7 +39,7 @@ try {
     $breeds = $client->Breed()->list();
     foreach ($breeds as $record) {
         $item = $record->data_get();
-        echo $item["id"] . " " . $item["message"] . "\n";
+        echo $item["id"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -268,8 +268,6 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `message` | Array of sub-breed names |
-| `status` |  |
 
 Operations: List, Load.
 
@@ -307,8 +305,6 @@ Create an instance: `$breed = $client->Breed();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `message` | `array` | Array of sub-breed names |
-| `status` | `string` |  |
 
 #### Example: Load
 
@@ -500,6 +496,7 @@ Use `Helpers::to_map()` to safely validate that a value is an array.
 php/
 ├── dog_sdk.php          -- Main SDK class
 ├── config.php                     -- Configuration
+├── schema.php                     -- Generated option + entity specs
 ├── features.php                   -- Feature factory
 ├── core/                          -- Core types and context
 ├── entity/                        -- Entity implementations

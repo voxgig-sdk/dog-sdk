@@ -2,28 +2,19 @@
   "existing": {
     "breed": {
       "BREED00": {
-        "id": "BREED00",
-        "message": [],
-        "status": "s20"
+        "id": "BREED00"
       },
       "BREED01": {
-        "id": "BREED01",
-        "message": [],
-        "status": "s3e"
+        "id": "BREED01"
       },
       "BREED02": {
-        "id": "BREED02",
-        "message": [],
-        "status": "s5c"
+        "id": "BREED02"
       }
     }
   },
   "new": {
     "breed": {
-      "breed_ref01": {
-        "message": [],
-        "status": "s7a"
-      }
+      "breed_ref01": {}
     }
   },
   "requests": {

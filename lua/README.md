@@ -43,7 +43,7 @@ local breeds, err = client:Breed():list()
 if err then error(err) end
 
 for _, item in ipairs(breeds) do
-  print(item["id"], item["status"])
+  print(item["id"])
 end
 ```
 
@@ -245,8 +245,6 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `message` | Array of sub-breed names |
-| `status` |  |
 
 Operations: List, Load.
 
@@ -284,8 +282,6 @@ Create an instance: `local breed = client:Breed(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `string` |  |
-| `message` | `table` | Array of sub-breed names |
-| `status` | `string` |  |
 
 #### Example: Load
 
@@ -473,6 +469,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── dog_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations

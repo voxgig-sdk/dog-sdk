@@ -95,8 +95,6 @@ local breed = client:Breed(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | No |  |
-| `message` | `table` | No | Array of sub-breed names |
-| `status` | `string` | No |  |
 
 ### Operations
 

@@ -94,15 +94,6 @@ func MakeConfig() map[string]any {
 						"name": "id",
 						"type": "`$STRING`",
 					},
-					map[string]any{
-						"name": "message",
-						"short": "Array of sub-breed names",
-						"type": "`$ARRAY`",
-					},
-					map[string]any{
-						"name": "status",
-						"type": "`$STRING`",
-					},
 				},
 				"id": map[string]any{
 					"field": "id",

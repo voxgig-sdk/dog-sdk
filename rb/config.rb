@@ -102,15 +102,6 @@ module DogConfig
               "name" => "id",
               "type" => "`$STRING`",
             },
-            {
-              "name" => "message",
-              "short" => "Array of sub-breed names",
-              "type" => "`$ARRAY`",
-            },
-            {
-              "name" => "status",
-              "type" => "`$STRING`",
-            },
           ],
           "id" => {
             "field" => "id",
