@@ -114,6 +114,7 @@ class DogConfig
           'fields' => [
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
           ],
@@ -128,26 +129,9 @@ class DogConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 'hound',
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/list',
-                  'rename' => [
-                    'param' => [
-                      'breed' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'breed',
@@ -159,20 +143,37 @@ class DogConfig
                       'lit' => 'list',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'list',
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'breed',
+                    '{id}',
+                    'list',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'breed' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.message`',
                   ],
-                  'parts' => [
-                    'breed',
-                    '{id}',
-                    'list',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'breed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 'hound',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    '$action' => 'list',
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -182,7 +183,6 @@ class DogConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breeds/list/all',
@@ -197,16 +197,18 @@ class DogConfig
                       'lit' => 'all',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.message`',
-                  ],
                   'parts' => [
                     'breeds',
                     'list',
                     'all',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.message`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -219,11 +221,13 @@ class DogConfig
           'fields' => [
             [
               'name' => 'message',
-              'short' => 'Array of random image URLs for the breed',
+              'title' => 'Message',
               'type' => '`$ARRAY`',
+              'short' => 'Array of random image URLs for the breed',
             ],
             [
               'name' => 'status',
+              'title' => 'Status',
               'type' => '`$STRING`',
             ],
           ],
@@ -234,35 +238,9 @@ class DogConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 'hound',
-                        'kind' => 'param',
-                        'name' => 'breed_id',
-                        'orig' => 'breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'afghan',
-                        'kind' => 'param',
-                        'name' => 'sub_breed',
-                        'orig' => 'sub_breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/{subBreed}/images',
-                  'rename' => [
-                    'param' => [
-                      'breed' => 'breed_id',
-                      'subBreed' => 'sub_breed',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'breed',
@@ -277,44 +255,53 @@ class DogConfig
                       'lit' => 'images',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'breed_id',
-                      'sub_breed',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body.message`',
-                  ],
                   'parts' => [
                     'breed',
                     '{breed_id}',
                     '{sub_breed}',
                     'images',
                   ],
-                ],
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 'hound',
-                        'kind' => 'param',
-                        'name' => 'breed_id',
-                        'orig' => 'breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/breed/{breed}/images',
                   'rename' => [
                     'param' => [
                       'breed' => 'breed_id',
+                      'subBreed' => 'sub_breed',
                     ],
                   ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body.message`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'breed_id',
+                        'orig' => 'breed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 'hound',
+                      ],
+                      [
+                        'name' => 'sub_breed',
+                        'orig' => 'sub_breed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 'afghan',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'breed_id',
+                      'sub_breed',
+                    ],
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/breed/{breed}/images',
                   'segments' => [
                     [
                       'lit' => 'breed',
@@ -326,19 +313,36 @@ class DogConfig
                       'lit' => 'images',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'breed_id',
+                  'parts' => [
+                    'breed',
+                    '{breed_id}',
+                    'images',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'breed' => 'breed_id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.message`',
                   ],
-                  'parts' => [
-                    'breed',
-                    '{breed_id}',
-                    'images',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'breed_id',
+                        'orig' => 'breed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 'hound',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'breed_id',
+                    ],
                   ],
                 ],
               ],
@@ -348,33 +352,9 @@ class DogConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 'hound',
-                        'kind' => 'param',
-                        'name' => 'breed_id',
-                        'orig' => 'breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'kind' => 'param',
-                        'name' => 'count',
-                        'orig' => 'count',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breed/{breed}/images/random/{count}',
-                  'rename' => [
-                    'param' => [
-                      'breed' => 'breed_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'breed',
@@ -392,16 +372,6 @@ class DogConfig
                       'var' => 'count',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'breed_id',
-                      'count',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'breed',
                     '{breed_id}',
@@ -409,37 +379,45 @@ class DogConfig
                     'random',
                     '{count}',
                   ],
-                ],
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 'hound',
-                        'kind' => 'param',
-                        'name' => 'breed_id',
-                        'orig' => 'breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                      [
-                        'example' => 'afghan',
-                        'kind' => 'param',
-                        'name' => 'sub_breed',
-                        'orig' => 'sub_breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/breed/{breed}/{subBreed}/images/random',
                   'rename' => [
                     'param' => [
                       'breed' => 'breed_id',
-                      'subBreed' => 'sub_breed',
                     ],
                   ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'breed_id',
+                        'orig' => 'breed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 'hound',
+                      ],
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'breed_id',
+                      'count',
+                    ],
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/breed/{breed}/{subBreed}/images/random',
                   'segments' => [
                     [
                       'lit' => 'breed',
@@ -457,17 +435,6 @@ class DogConfig
                       'lit' => 'random',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'random',
-                    'exist' => [
-                      'breed_id',
-                      'sub_breed',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'breed',
                     '{breed_id}',
@@ -475,28 +442,48 @@ class DogConfig
                     'images',
                     'random',
                   ],
-                ],
-                [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 'hound',
-                        'kind' => 'param',
-                        'name' => 'breed_id',
-                        'orig' => 'breed',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
-                  'kind' => 'http',
-                  'method' => 'GET',
-                  'orig' => '/breed/{breed}/images/random',
                   'rename' => [
                     'param' => [
                       'breed' => 'breed_id',
+                      'subBreed' => 'sub_breed',
                     ],
                   ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'breed_id',
+                        'orig' => 'breed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 'hound',
+                      ],
+                      [
+                        'name' => 'sub_breed',
+                        'orig' => 'sub_breed',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 'afghan',
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    '$action' => 'random',
+                    'exist' => [
+                      'breed_id',
+                      'sub_breed',
+                    ],
+                  ],
+                ],
+                [
+                  'kind' => 'http',
+                  'method' => 'GET',
+                  'orig' => '/breed/{breed}/images/random',
                   'segments' => [
                     [
                       'lit' => 'breed',
@@ -511,35 +498,41 @@ class DogConfig
                       'lit' => 'random',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'random',
-                    'exist' => [
-                      'breed_id',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'breed',
                     '{breed_id}',
                     'images',
                     'random',
                   ],
-                ],
-                [
+                  'rename' => [
+                    'param' => [
+                      'breed' => 'breed_id',
+                    ],
+                  ],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
                   'args' => [
                     'params' => [
                       [
+                        'name' => 'breed_id',
+                        'orig' => 'breed',
+                        'type' => '`$STRING`',
                         'kind' => 'param',
-                        'name' => 'count',
-                        'orig' => 'count',
                         'reqd' => true,
-                        'type' => '`$INTEGER`',
+                        'example' => 'hound',
                       ],
                     ],
                   ],
+                  'select' => [
+                    '$action' => 'random',
+                    'exist' => [
+                      'breed_id',
+                    ],
+                  ],
+                ],
+                [
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breeds/image/random/{count}',
@@ -557,24 +550,35 @@ class DogConfig
                       'var' => 'count',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'count',
-                    ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'breeds',
                     'image',
                     'random',
                     '{count}',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'count',
+                        'orig' => 'count',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'count',
+                    ],
+                  ],
                 ],
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/breeds/image/random',
@@ -589,17 +593,19 @@ class DogConfig
                       'lit' => 'random',
                     ],
                   ],
-                  'select' => [
-                    '$action' => 'random',
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'breeds',
                     'image',
                     'random',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [
+                    '$action' => 'random',
                   ],
                 ],
               ],
@@ -608,11 +614,10 @@ class DogConfig
           'relations' => [
             'ancestors' => [
               [
-                'breed',
+                '$.main.kit.entity.breed',
               ],
               [
-                'breed',
-                'random',
+                '$.main.kit.entity.breed',
               ],
             ],
           ],

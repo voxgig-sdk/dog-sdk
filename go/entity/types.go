@@ -1,7 +1,7 @@
 // Typed models for the Dog SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,7 +14,6 @@ import (
 
 // Breed is the typed data model for the breed entity.
 type Breed struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // BreedLoadMatch is the typed request payload for Breed.LoadTyped.
@@ -29,8 +28,6 @@ type BreedListMatch struct {
 
 // Image is the typed data model for the image entity.
 type Image struct {
-	Message *[]any `json:"message,omitempty"`
-	Status *string `json:"status,omitempty"`
 }
 
 // ImageLoadMatch is the typed request payload for Image.LoadTyped.

@@ -117,7 +117,7 @@ function image_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["image01", "image02", "image03", "breed01", "breed02", "breed03", "random01", "random02", "random03"] as $k) {
+    foreach (["image01", "image02", "image03", "breed01", "breed02", "breed03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

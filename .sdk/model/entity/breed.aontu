@@ -1,0 +1,108 @@
+# Entity: breed
+
+main: kit: entity: breed: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "breed"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /breed/{breed}/list"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "hound"
+                k: "param"
+                n: "id"
+                or: "breed"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/breed/{breed}/list"
+          q: {
+            "$action": "list"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              breed: "id"
+            }
+          }
+          s: [
+            {
+              lit: "breed"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "list"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.message`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /breeds/list/all"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/breeds/list/all"
+          s: [
+            {
+              lit: "breeds"
+            }
+            {
+              lit: "list"
+            }
+            {
+              lit: "all"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.message`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

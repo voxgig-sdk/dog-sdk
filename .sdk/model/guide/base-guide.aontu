@@ -1,0 +1,60 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 9
+  metrics: count: method: 9
+
+  entity: breed: {
+    path: "/breed/{breed}/list": {
+      action: "list": {}
+      rename: param: "breed": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.message`")|top
+    }
+    path: "/breeds/list/all": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.message`")|top
+    }
+  }
+
+  entity: image: {
+    path: "/breed/{breed}/images": {
+      rename: param: "breed": *"breed_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.message`")|top
+    }
+    path: "/breed/{breed}/images/random": {
+      action: "random": {}
+      rename: param: "breed": *"breed_id"
+      op: load: method: *GET
+    }
+    path: "/breed/{breed}/images/random/{count}": {
+      rename: param: "breed": *"breed_id"
+      op: load: method: *GET
+    }
+    path: "/breed/{breed}/{subBreed}/images": {
+      rename: param: "breed": *"breed_id"
+      rename: param: "subBreed": *"sub_breed"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.message`")|top
+    }
+    path: "/breed/{breed}/{subBreed}/images/random": {
+      action: "random": {}
+      rename: param: "breed": *"breed_id"
+      rename: param: "subBreed": *"sub_breed"
+      op: load: method: *GET
+    }
+    path: "/breeds/image/random": {
+      action: "random": {}
+      op: load: method: *GET
+    }
+    path: "/breeds/image/random/{count}": {
+      op: load: method: *GET
+    }
+  }
+
+}

@@ -1,0 +1,44 @@
+# BasicImageFlow
+
+main: kit: flow: BasicImageFlow:
+{
+  entity: "image",
+  kind: "basic",
+  name: "BasicImageFlow",
+  step: [
+    {
+      m: {
+        breed_id: "breed01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "image_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "image_ref01",
+        srcdatavar: "image_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-image_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicImageFlow"
+}

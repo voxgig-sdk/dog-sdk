@@ -1,0 +1,391 @@
+# Entity: image
+
+main: kit: entity: image: {
+
+  alias: field: {}
+
+  fields: {
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      sh: "Array of random image URLs for the breed"
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "image"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /breed/{breed}/{subBreed}/images"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "hound"
+                k: "param"
+                n: "breed_id"
+                or: "breed"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "afghan"
+                k: "param"
+                n: "sub_breed"
+                or: "sub_breed"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/breed/{breed}/{subBreed}/images"
+          q: {
+            exist: [
+              "breed_id"
+              "sub_breed"
+            ]
+          }
+          r: {
+            param: {
+              breed: "breed_id"
+              subBreed: "sub_breed"
+            }
+          }
+          s: [
+            {
+              lit: "breed"
+            }
+            {
+              var: "breed_id"
+            }
+            {
+              var: "sub_breed"
+            }
+            {
+              lit: "images"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.message`"
+          }
+        }
+        {
+          co: {
+            id: "GET /breed/{breed}/images"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "hound"
+                k: "param"
+                n: "breed_id"
+                or: "breed"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/breed/{breed}/images"
+          q: {
+            exist: [
+              "breed_id"
+            ]
+          }
+          r: {
+            param: {
+              breed: "breed_id"
+            }
+          }
+          s: [
+            {
+              lit: "breed"
+            }
+            {
+              var: "breed_id"
+            }
+            {
+              lit: "images"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.message`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /breed/{breed}/images/random/{count}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "hound"
+                k: "param"
+                n: "breed_id"
+                or: "breed"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "count"
+                or: "count"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/breed/{breed}/images/random/{count}"
+          q: {
+            exist: [
+              "breed_id"
+              "count"
+            ]
+          }
+          r: {
+            param: {
+              breed: "breed_id"
+            }
+          }
+          s: [
+            {
+              lit: "breed"
+            }
+            {
+              var: "breed_id"
+            }
+            {
+              lit: "images"
+            }
+            {
+              lit: "random"
+            }
+            {
+              var: "count"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /breed/{breed}/{subBreed}/images/random"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "hound"
+                k: "param"
+                n: "breed_id"
+                or: "breed"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "afghan"
+                k: "param"
+                n: "sub_breed"
+                or: "sub_breed"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/breed/{breed}/{subBreed}/images/random"
+          q: {
+            "$action": "random"
+            exist: [
+              "breed_id"
+              "sub_breed"
+            ]
+          }
+          r: {
+            param: {
+              breed: "breed_id"
+              subBreed: "sub_breed"
+            }
+          }
+          s: [
+            {
+              lit: "breed"
+            }
+            {
+              var: "breed_id"
+            }
+            {
+              var: "sub_breed"
+            }
+            {
+              lit: "images"
+            }
+            {
+              lit: "random"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /breed/{breed}/images/random"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "hound"
+                k: "param"
+                n: "breed_id"
+                or: "breed"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/breed/{breed}/images/random"
+          q: {
+            "$action": "random"
+            exist: [
+              "breed_id"
+            ]
+          }
+          r: {
+            param: {
+              breed: "breed_id"
+            }
+          }
+          s: [
+            {
+              lit: "breed"
+            }
+            {
+              var: "breed_id"
+            }
+            {
+              lit: "images"
+            }
+            {
+              lit: "random"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /breeds/image/random/{count}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "count"
+                or: "count"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/breeds/image/random/{count}"
+          q: {
+            exist: [
+              "count"
+            ]
+          }
+          s: [
+            {
+              lit: "breeds"
+            }
+            {
+              lit: "image"
+            }
+            {
+              lit: "random"
+            }
+            {
+              var: "count"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /breeds/image/random"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/breeds/image/random"
+          q: {
+            "$action": "random"
+          }
+          s: [
+            {
+              lit: "breeds"
+            }
+            {
+              lit: "image"
+            }
+            {
+              lit: "random"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.breed")]
+    [path("$.main.kit.entity.breed")]
+  ]
+
+}

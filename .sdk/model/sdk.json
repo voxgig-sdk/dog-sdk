@@ -24,20 +24,87 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "breed": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -49,35 +116,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /breed/{breed}/list",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "hound",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "hound",
+                        "k": "param",
+                        "n": "id",
+                        "or": "breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /breed/{breed}/list",
-                    "json": "{\"operationId\":\"listSubBreeds\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of sub-breed names\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breed/{breed}/list",
+                  "q": {
+                    "$action": "list",
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breed/{breed}/list",
-                  "rename": {
+                  "r": {
                     "param": {
                       "breed": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "breed"
                     },
@@ -88,13 +160,7 @@
                       "lit": "list"
                     }
                   ],
-                  "select": {
-                    "$action": "list",
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.message`"
                   }
@@ -106,18 +172,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /breeds/list/all",
-                    "json": "{\"operationId\":\"listAllBreeds\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"additionalProperties\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Object containing breed names as keys and sub-breeds as array values\",\"example\":{\"affenpinscher\":[],\"african\":[],\"hound\":[\"afghan\",\"basset\",\"blood\",\"english\",\"ibizan\",\"plott\",\"walker\"]},\"type\":\"object\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breeds/list/all",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breeds/list/all",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "breeds"
                     },
@@ -128,8 +195,7 @@
                       "lit": "all"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.message`"
                   }
@@ -146,21 +212,23 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "message",
-              "req": false,
-              "short": "Array of random image URLs for the breed",
-              "type": "`$ARRAY`"
+          "fields": {
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": false,
+              "sh": "Array of random image URLs for the breed",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "type": "`$STRING`"
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "image",
           "op": {
             "list": {
@@ -168,45 +236,50 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /breed/{breed}/{subBreed}/images",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "hound",
-                        "kind": "param",
-                        "name": "breed_id",
-                        "orig": "breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "hound",
+                        "k": "param",
+                        "n": "breed_id",
+                        "or": "breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "afghan",
-                        "kind": "param",
-                        "name": "sub_breed",
-                        "orig": "sub_breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "afghan",
+                        "k": "param",
+                        "n": "sub_breed",
+                        "or": "sub_breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /breed/{breed}/{subBreed}/images",
-                    "json": "{\"operationId\":\"getSubBreedImages\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"The sub-breed name\",\"example\":\"afghan\",\"in\":\"path\",\"name\":\"subBreed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of image URLs for the sub-breed\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed or sub-breed not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breed/{breed}/{subBreed}/images",
+                  "q": {
+                    "exist": [
+                      "breed_id",
+                      "sub_breed"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breed/{breed}/{subBreed}/images",
-                  "rename": {
+                  "r": {
                     "param": {
                       "breed": "breed_id",
                       "subBreed": "sub_breed"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "breed"
                     },
@@ -220,47 +293,45 @@
                       "lit": "images"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "breed_id",
-                      "sub_breed"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.message`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /breed/{breed}/images",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "hound",
-                        "kind": "param",
-                        "name": "breed_id",
-                        "orig": "breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "hound",
+                        "k": "param",
+                        "n": "breed_id",
+                        "or": "breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /breed/{breed}/images",
-                    "json": "{\"operationId\":\"getBreedImages\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of image URLs for the breed\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breed/{breed}/images",
+                  "q": {
+                    "exist": [
+                      "breed_id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breed/{breed}/images",
-                  "rename": {
+                  "r": {
                     "param": {
                       "breed": "breed_id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "breed"
                     },
@@ -271,12 +342,7 @@
                       "lit": "images"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "breed_id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.message`"
                   }
@@ -288,43 +354,48 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /breed/{breed}/images/random/{count}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "hound",
-                        "kind": "param",
-                        "name": "breed_id",
-                        "orig": "breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "hound",
+                        "k": "param",
+                        "n": "breed_id",
+                        "or": "breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "count",
-                        "orig": "count",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "count",
+                        "or": "count",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /breed/{breed}/images/random/{count}",
-                    "json": "{\"operationId\":\"getMultipleRandomBreedImages\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Number of random images to return\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of random image URLs for the breed\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breed/{breed}/images/random/{count}",
+                  "q": {
+                    "exist": [
+                      "breed_id",
+                      "count"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breed/{breed}/images/random/{count}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "breed": "breed_id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "breed"
                     },
@@ -341,57 +412,57 @@
                       "var": "count"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "breed_id",
-                      "count"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /breed/{breed}/{subBreed}/images/random",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "hound",
-                        "kind": "param",
-                        "name": "breed_id",
-                        "orig": "breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "hound",
+                        "k": "param",
+                        "n": "breed_id",
+                        "or": "breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "afghan",
-                        "kind": "param",
-                        "name": "sub_breed",
-                        "orig": "sub_breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "afghan",
+                        "k": "param",
+                        "n": "sub_breed",
+                        "or": "sub_breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /breed/{breed}/{subBreed}/images/random",
-                    "json": "{\"operationId\":\"getRandomSubBreedImage\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"The sub-breed name\",\"example\":\"afghan\",\"in\":\"path\",\"name\":\"subBreed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"URL of random image for the sub-breed\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed or sub-breed not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breed/{breed}/{subBreed}/images/random",
+                  "q": {
+                    "$action": "random",
+                    "exist": [
+                      "breed_id",
+                      "sub_breed"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breed/{breed}/{subBreed}/images/random",
-                  "rename": {
+                  "r": {
                     "param": {
                       "breed": "breed_id",
                       "subBreed": "sub_breed"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "breed"
                     },
@@ -408,48 +479,46 @@
                       "lit": "random"
                     }
                   ],
-                  "select": {
-                    "$action": "random",
-                    "exist": [
-                      "breed_id",
-                      "sub_breed"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /breed/{breed}/images/random",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "hound",
-                        "kind": "param",
-                        "name": "breed_id",
-                        "orig": "breed",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "hound",
+                        "k": "param",
+                        "n": "breed_id",
+                        "or": "breed",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /breed/{breed}/images/random",
-                    "json": "{\"operationId\":\"getRandomBreedImage\",\"parameters\":[{\"description\":\"The breed name\",\"example\":\"hound\",\"in\":\"path\",\"name\":\"breed\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"URL of random image for the breed\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"example\":\"Breed not found\",\"type\":\"string\"},\"status\":{\"example\":\"error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Breed not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breed/{breed}/images/random",
+                  "q": {
+                    "$action": "random",
+                    "exist": [
+                      "breed_id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breed/{breed}/images/random",
-                  "rename": {
+                  "r": {
                     "param": {
                       "breed": "breed_id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "breed"
                     },
@@ -463,41 +532,40 @@
                       "lit": "random"
                     }
                   ],
-                  "select": {
-                    "$action": "random",
-                    "exist": [
-                      "breed_id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /breeds/image/random/{count}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "count",
-                        "orig": "count",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "count",
+                        "or": "count",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /breeds/image/random/{count}",
-                    "json": "{\"operationId\":\"getMultipleRandomDogImages\",\"parameters\":[{\"description\":\"Number of random images to return (max 50)\",\"in\":\"path\",\"name\":\"count\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"Array of URLs of random dog images\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breeds/image/random/{count}",
+                  "q": {
+                    "exist": [
+                      "count"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breeds/image/random/{count}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "breeds"
                     },
@@ -511,29 +579,27 @@
                       "var": "count"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "count"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /breeds/image/random",
-                    "json": "{\"operationId\":\"getRandomDogImage\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"message\":{\"description\":\"URL of the random dog image\",\"example\":\"https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg\",\"type\":\"string\"},\"status\":{\"example\":\"success\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/breeds/image/random",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/breeds/image/random",
+                  "q": {
+                    "$action": "random"
+                  },
+                  "r": {},
+                  "s": [
                     {
                       "lit": "breeds"
                     },
@@ -544,10 +610,7 @@
                       "lit": "random"
                     }
                   ],
-                  "select": {
-                    "$action": "random"
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -558,11 +621,10 @@
           "relations": {
             "ancestors": [
               [
-                "breed"
+                "$.main.kit.entity.breed"
               ],
               [
-                "breed",
-                "random"
+                "$.main.kit.entity.breed"
               ]
             ]
           }
@@ -984,15 +1046,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
                 "breed": "breed01"
               },
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1002,17 +1064,17 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "breed_ref01",
                 "srcdatavar": "breed_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1032,15 +1094,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
                 "breed_id": "breed01"
               },
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1050,17 +1112,17 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "image_ref01",
                 "srcdatavar": "image_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
